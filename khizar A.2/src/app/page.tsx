@@ -1,6 +1,6 @@
 "use client";
 
-import AnalogueAgency from "@/components/KhizarArain.2";
+import AnalogueAgency from "@/components/KhizarArain";
 
 export default function Home() {
   return <AnalogueAgency />;

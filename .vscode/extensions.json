@@ -1,0 +1,10 @@
+[
+  {
+    "name": "Code Snapshot Insights",
+    "recommendations": [
+      "visualstudioexptteams.vscodeintellicode",
+      "dbaeumer.vscode-eslint",
+      "esbenp.prettier-vscode"
+    ]
+  }
+]

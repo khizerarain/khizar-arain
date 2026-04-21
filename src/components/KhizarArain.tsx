@@ -204,6 +204,7 @@ export default function AnalogueAgency() {
 
   const [modalOpen, setModalOpen] = useState(false);
   const [learnMoreOpen, setLearnMoreOpen] = useState(false);
+  const [aboutMeOpen, setAboutMeOpen] = useState(false);
 
   const heroLineTightened = "0.08em";
   const heroLineWide = "0.5em";
@@ -760,6 +761,13 @@ export default function AnalogueAgency() {
       transition: transform 340ms ease;
       will-change: transform;
     }
+    .aa-teamImg img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
     .aa-teamCard:hover .aa-teamImg{
       transform: scale(1.1);
     }
@@ -1085,8 +1093,7 @@ export default function AnalogueAgency() {
   };
 
   const team = [
-    { name: "khizar arain", tag: "Full-Stack Developer" },
-  
+    { name: "khizar arain", tag: "Full-Stack Developer", image: "/khizar-self.png" },
   ];
 
   const work = [
@@ -1211,7 +1218,7 @@ export default function AnalogueAgency() {
                 <div className="aa-kicker">One Man, big results.</div>
                 <h2 className="aa-h2">My self</h2>
               </div>
-              <CursorButton label="Learn more" />
+              <CursorButton label="Learn more" onClick={() => setAboutMeOpen(true)} />
             </div>
           </SectionReveal>
           <div style={{ height: 26 }} />
@@ -1226,7 +1233,9 @@ export default function AnalogueAgency() {
                 transition={{ duration: 0.45, ease: "easeOut", delay: i * 0.06 }}
                 aria-label={`Team member ${t.name}`}
               >
-                <div className="aa-teamImg" />
+                <div className="aa-teamImg">
+                  {t.image ? <img src={t.image} alt={t.name} /> : null}
+                </div>
                 <div className="aa-teamName">
                   {t.name} <span style={{ color: "rgba(255,255,255,0.72)", fontWeight: 700 }}>— {t.tag}</span>
                 </div>
@@ -1281,7 +1290,7 @@ export default function AnalogueAgency() {
           <SectionReveal idx={5}>
             <div className="aa-row">
               <div>
-                <h2 className="aa-h2">Our Services</h2>
+                <h2 className="aa-h2">Services</h2>
               </div>
             </div>
           </SectionReveal>
@@ -1308,12 +1317,12 @@ export default function AnalogueAgency() {
           </div>
         </section>
 
-        {/* 6: Our Work */}
+        {/* 6: my work */}
         <section className="aa-section aa-workWrap" data-aa-work id="work">
           <SectionReveal idx={6}>
             <div className="aa-row" style={{ marginBottom: 12 }}>
               <div>
-                <h2 className="aa-h2">Our work</h2>
+                <h2 className="aa-h2">my work</h2>
               </div>
               <CursorButton label="See all" />
             </div>
@@ -1407,6 +1416,16 @@ export default function AnalogueAgency() {
         <p style={{ marginTop: 0 }}>
           We’re proud to announce our latest case with Vitra: 100 years Panton. Replace this section with the real case study preview
           content.
+        </p>
+      </Modal>
+
+      <Modal open={aboutMeOpen} title="About me" onClose={() => setAboutMeOpen(false)}>
+        <p style={{ marginTop: 0 }}>
+          I am Khizar Arain, a Full-Stack Developer focused on building clean, modern, and high-performing digital experiences.
+        </p>
+        <p>
+          I work across front end and back end, with strong practical experience in e-commerce and production-ready web development.
+          My goal is simple: turn ideas into websites and products that look premium, load fast, and deliver real business results.
         </p>
       </Modal>
     </div>

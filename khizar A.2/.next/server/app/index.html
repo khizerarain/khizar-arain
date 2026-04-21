@@ -1,0 +1,626 @@
+<!DOCTYPE html><html lang="en" class="bg-black text-white"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="preload" href="/_next/static/media/83afe278b6a6bb3c-s.p.0q-301v4kxxnr.woff2" as="font" crossorigin="" type="font/woff2"/><link rel="preload" as="image" href="/khizar-self.png"/><link rel="stylesheet" href="/_next/static/chunks/037b6~syn_gav.css" data-precedence="next"/><link rel="preload" as="script" fetchPriority="low" href="/_next/static/chunks/0ht900cau6_ur.js"/><script src="/_next/static/chunks/0p5.qr0b94vxo.js" async=""></script><script src="/_next/static/chunks/16g.ca89g7fib.js" async=""></script><script src="/_next/static/chunks/turbopack-0mbyzpf8xm.r7.js" async=""></script><script src="/_next/static/chunks/0dbhjjzl8qfwv.js" async=""></script><script src="/_next/static/chunks/12o4b4ue-.266.js" async=""></script><meta name="next-size-adjust" content=""/><title>Khizar Arain</title><meta name="description" content="Cinematic dark portfolio recreation"/><link rel="icon" href="/favicon.ico?favicon.0x3dzn~oxb6tn.ico" sizes="256x256" type="image/x-icon"/><script src="/_next/static/chunks/03~yq9q893hmn.js" noModule=""></script></head><body class="inter_5972bc34-module__OU16Qa__className antialiased"><div hidden=""><!--$--><!--/$--></div><div class="aa-root"><style>
+    :root{
+      --bg:#000000;
+      --fg:#FFFFFF;
+      --muted: rgba(255,255,255,0.72);
+    }
+    .aa-root{
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--fg);
+      font-family: ui-sans-serif, system-ui, -apple-system, "Neue Haas Grotesk", "Helvetica Neue", Arial, sans-serif;
+      overflow-x: hidden;
+    }
+    .aa-header{
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 50;
+      padding: 22px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background-color 0.2s ease, backdrop-filter 0.2s ease;
+      background: rgba(0,0,0,0.02);
+      backdrop-filter: blur(0px);
+    }
+    .aa-brand{
+      font-weight: 800;
+      letter-spacing: 0.01em;
+      font-size: 22px;
+      line-height: 1;
+      user-select: none;
+    }
+    .aa-nav{
+      display: flex;
+      gap: 28px;
+      align-items: center;
+    }
+    .aa-navLink{
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      color: var(--fg);
+      text-decoration: none;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      padding: 8px 0;
+      cursor: pointer;
+    }
+    .aa-navLinkText{
+      transition: letter-spacing 220ms ease;
+    }
+    .aa-navLink:hover .aa-navLinkText{
+      letter-spacing: 0.06em;
+    }
+    .aa-navUnderline{
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 4px;
+      height: 1px;
+      background: var(--fg);
+      transform-origin: left;
+      transform: scaleX(0);
+      transition: transform 260ms ease;
+    }
+    .aa-navLink:hover .aa-navUnderline{
+      transform: scaleX(1);
+    }
+
+    .aa-section{
+      position: relative;
+      padding: 90px 28px;
+    }
+
+    [data-aa-hero]{
+      padding-top: 110px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .aa-heroBg{
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      opacity: 0.45;
+      filter: contrast(105%) brightness(103%);
+    }
+    .aa-heroBgLayer{
+      position:absolute;
+      inset:-20%;
+      background-image:
+        radial-gradient(circle at 20% 30%, rgba(255,255,255,0.08), rgba(255,255,255,0) 55%),
+        radial-gradient(circle at 80% 65%, rgba(255,255,255,0.06), rgba(255,255,255,0) 60%),
+        linear-gradient(90deg, rgba(255,255,255,0.04), rgba(255,255,255,0));
+      transform: translate3d(0,0,0);
+      mix-blend-mode: screen;
+    }
+    .aa-heroBgLayer:nth-child(2){
+      opacity:0.55;
+      background-image:
+        repeating-linear-gradient(120deg, rgba(255,255,255,0.05), rgba(255,255,255,0) 8px),
+        repeating-linear-gradient(35deg, rgba(255,255,255,0.03), rgba(255,255,255,0) 10px);
+      filter: blur(0.2px);
+    }
+
+    .aa-heroTitleWrap{
+      position: relative;
+      z-index: 2;
+    }
+    .aa-heroTitle{
+      font-weight: 900;
+      font-size: clamp(44px, 7.2vw, 96px);
+      letter-spacing: 0.5em;
+      line-height: 0.98;
+      margin: 0;
+      text-transform: none;
+      user-select: none;
+      white-space: nowrap;
+    }
+    .aa-heroLetter{
+      display: inline-block;
+      will-change: transform;
+    }
+    .aa-heroSubtitle{
+      margin-top: 26px;
+      font-size: clamp(14px, 1.7vw, 18px);
+      max-width: 860px;
+      color: var(--muted);
+      line-height: 1.55;
+      z-index: 2;
+      letter-spacing: 0.01em;
+    }
+    .aa-scrollIndicator{
+      position:absolute;
+      bottom: 22px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      opacity: 1;
+      z-index: 3;
+    }
+
+    .aa-btn{
+      border: 1px solid rgba(255,255,255,0.75);
+      background: rgba(0,0,0,0.2);
+      color: var(--fg);
+      padding: 14px 18px;
+      border-radius: 999px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+    .aa-btnText{
+      display: inline-block;
+      position: relative;
+      z-index: 2;
+    }
+    .aa-btnSheen{
+      content: "";
+      position:absolute;
+      inset: -60% -30%;
+      background: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,0.18), rgba(255,255,255,0));
+      transform: translateX(-30%) rotate(12deg);
+      opacity: 0;
+      transition: opacity 240ms ease;
+      z-index: 1;
+      pointer-events:none;
+    }
+    .aa-btn:hover .aa-btnSheen{
+      opacity: 1;
+      animation: aa-sheen 900ms ease-out;
+    }
+    @keyframes aa-sheen{
+      0%{ transform: translateX(-40%) rotate(12deg); }
+      100%{ transform: translateX(40%) rotate(12deg); }
+    }
+
+    .aa-btnPrimary{
+      box-shadow: 0 0 0 1px rgba(255,255,255,0.18) inset;
+    }
+    .aa-btnGhost{
+      background: transparent;
+      box-shadow: none;
+    }
+
+    .aa-grid2{
+      display:grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 24px;
+      align-items: center;
+    }
+    .aa-kicker{
+      color: rgba(255,255,255,0.74);
+      font-size: 14px;
+      letter-spacing: 0.02em;
+      margin-bottom: 18px;
+      font-weight: 600;
+    }
+    .aa-h2{
+      font-size: clamp(28px, 4.2vw, 56px);
+      font-weight: 900;
+      margin: 0;
+      letter-spacing: 0.01em;
+      line-height: 1.03;
+    }
+    .aa-p{
+      color: rgba(255,255,255,0.74);
+      font-size: 16px;
+      line-height: 1.6;
+      max-width: 760px;
+      margin-top: 16px;
+    }
+    .aa-row{
+      display:flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+      flex-wrap: wrap;
+    }
+
+    .aa-card{
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 18px;
+      overflow:hidden;
+      background: rgba(255,255,255,0.02);
+    }
+
+    .aa-media{
+      height: 420px;
+      border-radius: 18px;
+      overflow: hidden;
+      position: relative;
+    }
+    .aa-mediaLayer{
+      position:absolute;
+      inset:-18%;
+      will-change: transform;
+      background:
+        radial-gradient(circle at 30% 30%, rgba(255,255,255,0.12), rgba(255,255,255,0) 58%),
+        radial-gradient(circle at 80% 60%, rgba(255,255,255,0.08), rgba(255,255,255,0) 60%),
+        linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01));
+      opacity: 0.95;
+      transform: translate3d(0,0,0);
+    }
+    .aa-layerA{ opacity: 0.92; }
+    .aa-layerB{ opacity: 0.78; filter: blur(0.2px); }
+    .aa-layerC{ opacity: 0.6; filter: blur(0.6px); }
+    .aa-media::before{
+      content:"";
+      position:absolute;
+      inset:-30%;
+      background:
+        radial-gradient(circle at 30% 30%, rgba(255,255,255,0.08), rgba(255,255,255,0) 60%),
+        radial-gradient(circle at 70% 60%, rgba(255,255,255,0.06), rgba(255,255,255,0) 55%),
+        linear-gradient(90deg, rgba(255,255,255,0.06), rgba(255,255,255,0));
+      transform: translate3d(0,0,0);
+      opacity: 0.9;
+    }
+    .aa-mediaOverlay{
+      position:absolute;
+      inset:0;
+      background: radial-gradient(circle at 50% 20%, rgba(0,0,0,0), rgba(0,0,0,0.75) 68%, rgba(0,0,0,0.9) 100%);
+    }
+    .aa-sectionHeader{
+      margin-bottom: 22px;
+    }
+
+    .aa-teamGrid{
+      display:grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .aa-teamCard{
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.12);
+      overflow:hidden;
+      background: rgba(255,255,255,0.02);
+      position: relative;
+      height: 320px;
+      display:flex;
+      flex-direction: column;
+      justify-content:flex-end;
+    }
+    .aa-teamImg{
+      position:absolute;
+      inset:0;
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.01)),
+        radial-gradient(circle at 30% 20%, rgba(255,255,255,0.08), rgba(255,255,255,0) 62%),
+        radial-gradient(circle at 70% 70%, rgba(255,255,255,0.06), rgba(255,255,255,0) 58%),
+        linear-gradient(90deg, rgba(255,255,255,0.03), rgba(255,255,255,0));
+      transform: scale(1.02);
+      transition: transform 340ms ease;
+      will-change: transform;
+    }
+    .aa-teamImg img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+    .aa-teamCard:hover .aa-teamImg{
+      transform: scale(1.1);
+    }
+    .aa-teamName{
+      position: relative;
+      z-index: 2;
+      padding: 14px 14px 12px;
+      background: linear-gradient(180deg, rgba(0,0,0,0), rgba(0,0,0,0.78) 30%, rgba(0,0,0,0.92) 100%);
+      transform: translateY(14px);
+      opacity: 0;
+      transition: opacity 260ms ease, transform 260ms ease;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+    }
+    .aa-teamCard:hover .aa-teamName{
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .aa-contactGrid{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+    .aa-contactItem{
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 16px;
+      padding: 20px;
+      background: rgba(255,255,255,0.02);
+      min-height: 130px;
+    }
+    .aa-icon{
+      width: 26px;
+      height: 26px;
+      display:block;
+      margin-bottom: 14px;
+      opacity: 0.95;
+    }
+    .aa-contactLabel{
+      font-weight: 900;
+      letter-spacing: 0.02em;
+      font-size: 15px;
+      margin-bottom: 6px;
+    }
+    .aa-contactValue{
+      color: rgba(255,255,255,0.74);
+      line-height: 1.55;
+      font-size: 14px;
+    }
+
+    .aa-servicesGrid{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+    .aa-serviceBlock{
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 18px;
+      padding: 22px;
+      background: rgba(255,255,255,0.02);
+      transition: transform 220ms ease, box-shadow 220ms ease;
+      min-height: 210px;
+      display:flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .aa-serviceBlock:hover{
+      transform: translateY(-20px);
+      box-shadow: 0 0 0 1px rgba(255,255,255,0.18) inset, 0 0 32px rgba(255,255,255,0.08);
+    }
+    .aa-serviceTitle{
+      font-size: 20px;
+      font-weight: 900;
+      letter-spacing: 0.01em;
+    }
+    .aa-serviceDesc{
+      margin-top: 12px;
+      color: rgba(255,255,255,0.74);
+      line-height: 1.65;
+      font-size: 14px;
+    }
+
+    .aa-workWrap{
+      border-top: 1px solid rgba(255,255,255,0.08);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .aa-gallery{
+      position: relative;
+      padding: 26px 0;
+    }
+    .aa-galleryViewport{
+      width: 100%;
+      overflow:hidden;
+      cursor: grab;
+    }
+    .aa-galleryTrack{
+      display:flex;
+      gap: 16px;
+      padding: 0 28px;
+      will-change: transform;
+    }
+    .aa-workCard{
+      width: min(420px, 72vw);
+      height: 320px;
+      border-radius: 18px;
+      overflow:hidden;
+      position: relative;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.02);
+      flex: 0 0 auto;
+    }
+    .aa-workImg{
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(circle at 20% 30%, rgba(255,255,255,0.10), rgba(255,255,255,0) 58%),
+        radial-gradient(circle at 80% 60%, rgba(255,255,255,0.08), rgba(255,255,255,0) 60%),
+        linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01));
+      transform: scale(1.02);
+      transition: transform 280ms ease;
+    }
+    .aa-workCard:hover .aa-workImg{
+      transform: scale(1.08);
+    }
+    .aa-workOverlay{
+      position:absolute;
+      inset:0;
+      background: rgba(0,0,0,0.18);
+      transition: background 280ms ease;
+    }
+    .aa-workCard:hover .aa-workOverlay{
+      background: rgba(0,0,0,0.55);
+    }
+    .aa-workTitle{
+      position:absolute;
+      bottom: 16px;
+      left: 16px;
+      right: 16px;
+      font-weight: 900;
+      letter-spacing: 0.01em;
+      font-size: 18px;
+      display:flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 14px;
+      z-index: 2;
+    }
+    .aa-workTag{
+      color: rgba(255,255,255,0.7);
+      font-size: 12px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      font-weight: 800;
+    }
+
+    .aa-aboutBig{
+      font-size: clamp(18px, 2.4vw, 28px);
+      line-height: 1.45;
+      font-weight: 800;
+      color: rgba(255,255,255,0.85);
+      max-width: 980px;
+      margin: 0 auto;
+      letter-spacing: 0.01em;
+    }
+
+    .aa-cta{
+      min-height: 60vh;
+      padding-top: 120px;
+      padding-bottom: 120px;
+      display:flex;
+      align-items: center;
+      justify-content: center;
+      text-align:center;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+    .aa-ctaInner{
+      display:flex;
+      flex-direction: column;
+      gap: 26px;
+      align-items: center;
+      justify-content:center;
+    }
+    .aa-ctaText{
+      font-weight: 950;
+      font-size: clamp(44px, 6vw, 96px);
+      letter-spacing: 0.06em;
+      line-height: 1;
+      user-select: none;
+    }
+
+    .aa-modalOverlay{
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.75);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      z-index: 1000;
+      padding: 20px;
+    }
+    .aa-modal{
+      width: min(860px, 100%);
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(0,0,0,0.72);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 0 0 1px rgba(255,255,255,0.06) inset, 0 30px 80px rgba(0,0,0,0.7);
+      overflow:hidden;
+    }
+    .aa-modalHeader{
+      padding: 18px 18px 10px;
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      gap: 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.10);
+    }
+    .aa-modalTitle{
+      font-weight: 950;
+      letter-spacing: 0.02em;
+      font-size: 16px;
+    }
+    .aa-closeBtn{
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.18);
+      color: rgba(255,255,255,0.92);
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+    .aa-modalBody{
+      padding: 18px;
+      color: rgba(255,255,255,0.74);
+      line-height: 1.7;
+      font-size: 14px;
+    }
+
+    footer{
+      padding: 46px 28px 70px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.74);
+    }
+    .aa-footerRow{
+      display:flex;
+      justify-content: space-between;
+      align-items:flex-start;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .aa-footerLinks{
+      display:flex;
+      gap: 22px;
+      flex-wrap: wrap;
+    }
+    .aa-footerLink{
+      color: rgba(255,255,255,0.78);
+      text-decoration: none;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      position: relative;
+      padding-bottom: 6px;
+    }
+    .aa-footerLink::after{
+      content:"";
+      position:absolute;
+      left:0;
+      right:0;
+      bottom:0;
+      height:1px;
+      background: rgba(255,255,255,0.9);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 260ms ease;
+    }
+    .aa-footerLink:hover::after{
+      transform: scaleX(1);
+    }
+    .aa-social{
+      display:flex;
+      gap: 14px;
+      align-items:center;
+    }
+    .aa-social a{
+      width: 36px;
+      height: 36px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.16);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color: rgba(255,255,255,0.84);
+      text-decoration:none;
+      transition: transform 200ms ease, box-shadow 200ms ease;
+    }
+    .aa-social a:hover{
+      transform: scale(1.05);
+      box-shadow: 0 0 26px rgba(255,255,255,0.12);
+    }
+
+    /* Mobile: simplify motion and layout. */
+    @media (max-width: 900px){
+      .aa-header{ padding: 18px 18px; }
+      .aa-teamGrid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .aa-grid2{ grid-template-columns: 1fr; }
+      .aa-servicesGrid{ grid-template-columns: 1fr; }
+      .aa-contactGrid{ grid-template-columns: 1fr; }
+      .aa-workCard{ height: 280px; }
+      [data-aa-hero]{ padding-top: 96px; }
+      .aa-heroTitle{ white-space: normal; letter-spacing: 0.18em; }
+      .aa-scrollIndicator{ display:none; }
+    }
+  </style><header class="aa-header" data-aa-header="true"><div class="aa-brand">khizar arain</div><nav class="aa-nav" aria-label="Primary"><a class="aa-navLink" href="#"><span class="aa-navLinkText">Work</span><span class="aa-navUnderline" aria-hidden="true"></span></a><a class="aa-navLink" href="#"><span class="aa-navLinkText">About</span><span class="aa-navUnderline" aria-hidden="true"></span></a></nav></header><main><section data-aa-hero="true"><div class="aa-heroBg" aria-hidden="true"><div data-aa-bg1="true" class="aa-heroBgLayer"></div><div data-aa-bg2="true" class="aa-heroBgLayer"></div></div><div class="aa-heroTitleWrap"><div data-aa-heroline="true" class="aa-heroTitle" style="letter-spacing:0.5em"><div class=""><span class="aa-heroLetter" style="opacity:0;transform:translateY(26px) scale(0.8)">k</span><span class="aa-heroLetter" style="opacity:0;transform:translateY(26px) scale(0.8)">h</span><span class="aa-heroLetter" style="opacity:0;transform:translateY(26px) scale(0.8)">i</span><span class="aa-heroLetter" style="opacity:0;transform:translateY(26px) scale(0.8)">z</span><span class="aa-heroLetter" style="opacity:0;transform:translateY(26px) scale(0.8)">a</span><span class="aa-heroLetter" style="opacity:0;transform:translateY(26px) scale(0.8)">r</span></div></div><div data-aa-heroline="true" class="aa-heroTitle" style="letter-spacing:0.5em;margin-top:-0.06em"><div class=""><span class="aa-heroLetter" style="opacity:0;transform:translateY(26px) scale(0.8)">a</span><span class="aa-heroLetter" style="opacity:0;transform:translateY(26px) scale(0.8)">r</span><span class="aa-heroLetter" style="opacity:0;transform:translateY(26px) scale(0.8)">a</span><span class="aa-heroLetter" style="opacity:0;transform:translateY(26px) scale(0.8)">i</span><span class="aa-heroLetter" style="opacity:0;transform:translateY(26px) scale(0.8)">n</span></div></div></div><div class="aa-heroSubtitle" style="opacity:0;transform:translateY(8px)">Whether it’s a product or a service, people choose with their hearts, not just their heads. We create the world your product lives in.</div><div data-aa-scrollindicator="true" class="aa-scrollIndicator">Scroll</div></section><section class="aa-section" data-aa-section="true"><div class="aa-sectionHeader" data-aa-section="true"><div class="" style="opacity:0;transform:translate3d(0,50px,0)"><div class="aa-row"><div><h2 class="aa-h2">Website of the Year</h2><p class="aa-p" style="margin-top:14px">Our latest case for Vitra has won Framer Website of the Year</p></div><button class="aa-btn aa-btnPrimary"><span class="aa-btnText">See announcement</span><span class="aa-btnSheen" aria-hidden="true"></span></button></div></div></div><div class="aa-media" data-aa-section="true"><div class="aa-mediaLayer aa-layerA"></div><div class="aa-mediaLayer aa-layerB"></div><div class="aa-mediaLayer aa-layerC"></div><div class="aa-mediaOverlay"></div></div></section><section class="aa-section" data-aa-section="true"><div class="" style="opacity:0;transform:translate3d(0,50px,0)"><div class="aa-grid2" data-aa-section="true"><div><h2 class="aa-h2">New case</h2><p class="aa-p">We’re proud to announce our latest case with Vitra: 100 years Panton</p><div style="margin-top:22px"><button class="aa-btn aa-btnPrimary"><span class="aa-btnText">Learn more</span><span class="aa-btnSheen" aria-hidden="true"></span></button></div></div><div class="aa-media" data-aa-casemedia="true" data-aa-section="true"><div class="aa-mediaLayer aa-layerA"></div><div class="aa-mediaLayer aa-layerB"></div><div class="aa-mediaLayer aa-layerC"></div><div class="aa-mediaOverlay"></div></div></div></div></section><section class="aa-section" data-aa-section="true"><div class="" style="opacity:0;transform:translate3d(0,50px,0)"><div class="aa-row" data-aa-section="true"><div><div class="aa-kicker">One Man, big results.</div><h2 class="aa-h2">My self</h2></div><button class="aa-btn aa-btnPrimary"><span class="aa-btnText">Learn more</span><span class="aa-btnSheen" aria-hidden="true"></span></button></div></div><div style="height:26px"></div><div class="aa-teamGrid" data-aa-section="true"><div class="aa-teamCard" aria-label="Team member khizar arain" style="opacity:0;transform:translateY(18px)"><div class="aa-teamImg"><img src="/khizar-self.png" alt="khizar arain"/></div><div class="aa-teamName">khizar arain<!-- --> <span style="color:rgba(255,255,255,0.72);font-weight:700">— <!-- -->Full-Stack Developer</span></div></div></div></section><section class="aa-section" data-aa-section="true" id="contact"><div class="" style="opacity:0;transform:translate3d(0,50px,0)"><div class="aa-row"><div><div class="aa-kicker">By mail, phone or book a call.</div><h2 class="aa-h2">Contact</h2></div><button class="aa-btn aa-btnPrimary"><span class="aa-btnText">Learn more</span><span class="aa-btnSheen" aria-hidden="true"></span></button></div></div><div style="height:26px"></div><div class="aa-contactGrid" data-aa-section="true"><div class="aa-contactItem"><svg class="aa-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4.5 7.5l7.5 5 7.5-5"></path><rect x="4.5" y="6" width="15" height="12.5" rx="2"></rect></svg><div class="aa-contactLabel">Mail</div><div class="aa-contactValue">realkhizararain7@gmail.com</div></div><div class="aa-contactItem"><svg class="aa-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 3.8h2.2l1.2 4-1.2 1.2c1.5 3 3.6 5.2 6.6 6.6l1.2-1.2 4 1.2V19c0 .6-.4 1-1 1-8.6 0-15.6-7-15.6-15.6 0-.6.4-1 1-1z"></path></svg><div class="aa-contactLabel">Phone</div><div class="aa-contactValue">03103080347</div></div><div class="aa-contactItem"><svg class="aa-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4.8" y="6.5" width="14.2" height="14.2" rx="2"></rect><path d="M8 3.8v5"></path><path d="M16 3.8v5"></path><path d="M4.8 10h14.2"></path></svg><div class="aa-contactLabel">Calendar</div><div class="aa-contactValue">Book a 20-minute intro call</div></div></div></section><section class="aa-section" data-aa-section="true" id="services"><div class="" style="opacity:0;transform:translate3d(0,50px,0)"><div class="aa-row"><div><h2 class="aa-h2">Services</h2></div></div></div><div style="height:26px"></div><div class="aa-servicesGrid" data-aa-section="true"><div class="aa-serviceBlock"><div><div class="aa-serviceTitle">Front end And Back end. Developer</div><div class="aa-serviceDesc">We define your brand through strategy, branding design and touchpoints.</div></div><div style="height:8px"></div></div><div class="aa-serviceBlock"><div><div class="aa-serviceTitle">(no-code) E-commerce</div><div class="aa-serviceDesc">Over 2 years of experience in e-commerce. We partner with Shopify plus partners for development.</div></div><div style="height:8px"></div></div></div></section><section class="aa-section aa-workWrap" data-aa-work="true" id="work"><div class="" style="opacity:0;transform:translate3d(0,50px,0)"><div class="aa-row" style="margin-bottom:12px"><div><h2 class="aa-h2">my work</h2></div><button class="aa-btn aa-btnPrimary"><span class="aa-btnText">See all</span><span class="aa-btnSheen" aria-hidden="true"></span></button></div></div><div class="aa-gallery" data-aa-section="true"><div class="aa-galleryViewport" data-aa-galleryviewport="true"><div class="aa-galleryTrack" data-aa-gallerytrack="true" data-aa-gallery="true"><div class="aa-workCard" aria-label="Project Vitra"><div class="aa-workImg"></div><div class="aa-workOverlay"></div><div class="aa-workTitle"><div>Vitra</div><div class="aa-workTag">Case</div></div></div><div class="aa-workCard" aria-label="Project Studio Atlas"><div class="aa-workImg"></div><div class="aa-workOverlay"></div><div class="aa-workTitle"><div>Studio Atlas</div><div class="aa-workTag">Brand</div></div></div><div class="aa-workCard" aria-label="Project North &amp; Co."><div class="aa-workImg"></div><div class="aa-workOverlay"></div><div class="aa-workTitle"><div>North &amp; Co.</div><div class="aa-workTag">Digital</div></div></div><div class="aa-workCard" aria-label="Project Kinetic"><div class="aa-workImg"></div><div class="aa-workOverlay"></div><div class="aa-workTitle"><div>Kinetic</div><div class="aa-workTag">E-comm</div></div></div><div class="aa-workCard" aria-label="Project Morrow"><div class="aa-workImg"></div><div class="aa-workOverlay"></div><div class="aa-workTitle"><div>Morrow</div><div class="aa-workTag">Touchpoints</div></div></div><div class="aa-workCard" aria-label="Project Cinder"><div class="aa-workImg"></div><div class="aa-workOverlay"></div><div class="aa-workTitle"><div>Cinder</div><div class="aa-workTag">Identity</div></div></div></div></div></div></section><section class="aa-section" data-aa-about="true" id="about"><div class="" style="opacity:0;transform:translate3d(0,50px,0)"><h2 class="aa-h2" style="margin-bottom:18px">About Us</h2><p class="aa-aboutBig">Khizar Arain is an award-winning design professional. I help businesses at critical touchpoints define, and build new futures.</p></div></section><section class="aa-cta" data-aa-ctapin="true"><div class="aa-ctaInner" data-aa-section="true"><div class="aa-ctaText">Ready when you are</div><button class="aa-btn aa-btnPrimary"><span class="aa-btnText">Book call</span><span class="aa-btnSheen" aria-hidden="true"></span></button></div></section></main><footer><div class="aa-footerRow"><div class="aa-footerLinks" aria-label="Footer links"><a class="aa-footerLink" href="#work">Work</a><a class="aa-footerLink" href="#about">About</a><a class="aa-footerLink" href="#services">Services</a><a class="aa-footerLink" href="#contact">Contact</a></div><div><div style="font-weight:800;color:rgba(255,255,255,0.78);margin-bottom:10px">© <!-- -->2026<!-- --> khizar arain</div><div class="aa-social" aria-label="Social links"><a href="https://x.com/KhizarArain103" aria-label="Twitter">X</a><a href="https://www.instagram.com/realkhizerarain/" aria-label="Instagram">IG</a><a href="#" aria-label="Behance">BE</a></div></div></div></footer></div><!--$--><!--/$--><script src="/_next/static/chunks/0ht900cau6_ur.js" id="_R_" async=""></script><script>(self.__next_f=self.__next_f||[]).push([0])</script><script>self.__next_f.push([1,"1:\"$Sreact.fragment\"\n2:I[39756,[\"/_next/static/chunks/0dbhjjzl8qfwv.js\"],\"default\"]\n3:I[37457,[\"/_next/static/chunks/0dbhjjzl8qfwv.js\"],\"default\"]\n4:I[47257,[\"/_next/static/chunks/0dbhjjzl8qfwv.js\"],\"ClientPageRoot\"]\n5:I[52683,[\"/_next/static/chunks/0dbhjjzl8qfwv.js\",\"/_next/static/chunks/12o4b4ue-.266.js\"],\"default\"]\n8:I[97367,[\"/_next/static/chunks/0dbhjjzl8qfwv.js\"],\"OutletBoundary\"]\n9:\"$Sreact.suspense\"\nb:I[97367,[\"/_next/static/chunks/0dbhjjzl8qfwv.js\"],\"ViewportBoundary\"]\nd:I[97367,[\"/_next/static/chunks/0dbhjjzl8qfwv.js\"],\"MetadataBoundary\"]\nf:I[68027,[\"/_next/static/chunks/0dbhjjzl8qfwv.js\"],\"default\",1]\n:HL[\"/_next/static/chunks/037b6~syn_gav.css\",\"style\"]\n:HL[\"/_next/static/media/83afe278b6a6bb3c-s.p.0q-301v4kxxnr.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n"])</script><script>self.__next_f.push([1,"0:{\"P\":null,\"c\":[\"\",\"\"],\"q\":\"\",\"i\":false,\"f\":[[[\"\",{\"children\":[\"__PAGE__\",{}]},\"$undefined\",\"$undefined\",16],[[\"$\",\"$1\",\"c\",{\"children\":[[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/_next/static/chunks/037b6~syn_gav.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\",\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-0\",{\"src\":\"/_next/static/chunks/0dbhjjzl8qfwv.js\",\"async\":true,\"nonce\":\"$undefined\"}]],[\"$\",\"html\",null,{\"lang\":\"en\",\"className\":\"bg-black text-white\",\"children\":[\"$\",\"body\",null,{\"className\":\"inter_5972bc34-module__OU16Qa__className antialiased\",\"children\":[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":[[[\"$\",\"title\",null,{\"children\":\"404: This page could not be found.\"}],[\"$\",\"div\",null,{\"style\":{\"fontFamily\":\"system-ui,\\\"Segoe UI\\\",Roboto,Helvetica,Arial,sans-serif,\\\"Apple Color Emoji\\\",\\\"Segoe UI Emoji\\\"\",\"height\":\"100vh\",\"textAlign\":\"center\",\"display\":\"flex\",\"flexDirection\":\"column\",\"alignItems\":\"center\",\"justifyContent\":\"center\"},\"children\":[\"$\",\"div\",null,{\"children\":[[\"$\",\"style\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}\"}}],[\"$\",\"h1\",null,{\"className\":\"next-error-h1\",\"style\":{\"display\":\"inline-block\",\"margin\":\"0 20px 0 0\",\"padding\":\"0 23px 0 0\",\"fontSize\":24,\"fontWeight\":500,\"verticalAlign\":\"top\",\"lineHeight\":\"49px\"},\"children\":404}],[\"$\",\"div\",null,{\"style\":{\"display\":\"inline-block\"},\"children\":[\"$\",\"h2\",null,{\"style\":{\"fontSize\":14,\"fontWeight\":400,\"lineHeight\":\"49px\",\"margin\":0},\"children\":\"This page could not be found.\"}]}]]}]}]],[]],\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]}]}]]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[[\"$\",\"$L4\",null,{\"Component\":\"$5\",\"serverProvidedParams\":{\"searchParams\":{},\"params\":{},\"promises\":[\"$@6\",\"$@7\"]}}],[[\"$\",\"script\",\"script-0\",{\"src\":\"/_next/static/chunks/12o4b4ue-.266.js\",\"async\":true,\"nonce\":\"$undefined\"}]],[\"$\",\"$L8\",null,{\"children\":[\"$\",\"$9\",null,{\"name\":\"Next.MetadataOutlet\",\"children\":\"$@a\"}]}]]}],{},null,false,null]},null,false,null],[\"$\",\"$1\",\"h\",{\"children\":[null,[\"$\",\"$Lb\",null,{\"children\":\"$Lc\"}],[\"$\",\"div\",null,{\"hidden\":true,\"children\":[\"$\",\"$Ld\",null,{\"children\":[\"$\",\"$9\",null,{\"name\":\"Next.Metadata\",\"children\":\"$Le\"}]}]}],[\"$\",\"meta\",null,{\"name\":\"next-size-adjust\",\"content\":\"\"}]]}],false]],\"m\":\"$undefined\",\"G\":[\"$f\",[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/_next/static/chunks/037b6~syn_gav.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\",\"nonce\":\"$undefined\"}]]],\"S\":true,\"h\":null,\"s\":\"$undefined\",\"l\":\"$undefined\",\"p\":\"$undefined\",\"d\":\"$undefined\",\"b\":\"3_29-x6zWPgyfBTueRqV-\"}\n"])</script><script>self.__next_f.push([1,"6:{}\n7:\"$0:f:0:1:1:children:0:props:children:0:props:serverProvidedParams:params\"\n"])</script><script>self.__next_f.push([1,"c:[[\"$\",\"meta\",\"0\",{\"charSet\":\"utf-8\"}],[\"$\",\"meta\",\"1\",{\"name\":\"viewport\",\"content\":\"width=device-width, initial-scale=1\"}]]\n"])</script><script>self.__next_f.push([1,"10:I[27201,[\"/_next/static/chunks/0dbhjjzl8qfwv.js\"],\"IconMark\"]\na:null\ne:[[\"$\",\"title\",\"0\",{\"children\":\"Khizar Arain\"}],[\"$\",\"meta\",\"1\",{\"name\":\"description\",\"content\":\"Cinematic dark portfolio recreation\"}],[\"$\",\"link\",\"2\",{\"rel\":\"icon\",\"href\":\"/favicon.ico?favicon.0x3dzn~oxb6tn.ico\",\"sizes\":\"256x256\",\"type\":\"image/x-icon\"}],[\"$\",\"$L10\",\"3\",{}]]\n"])</script></body></html>

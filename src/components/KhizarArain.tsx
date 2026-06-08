@@ -38,7 +38,11 @@ function Modal({ open, title, onClose, children }: ModalProps) {
           >
             <div className="aa-modalHeader">
               <div className="aa-modalTitle">{title}</div>
-              <button className="aa-closeBtn" onClick={onClose} aria-label="Close modal">
+              <button
+                className="aa-closeBtn"
+                onClick={onClose}
+                aria-label="Close modal"
+              >
                 Close
               </button>
             </div>
@@ -86,7 +90,11 @@ function HeroTitle({
           className="aa-heroLetter"
           initial={{ opacity: 0, y: 26, scale: 0.8 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1], delay: idx * staggerDelaySecPerLetter }}
+          transition={{
+            duration: 0.75,
+            ease: [0.22, 1, 0.36, 1],
+            delay: idx * staggerDelaySecPerLetter,
+          }}
         >
           {ch}
         </motion.span>
@@ -112,7 +120,8 @@ function CursorButton({
       whileHover={{
         scale: 1.05,
         letterSpacing: "0.04em",
-        boxShadow: "0 0 0 1px rgba(255,255,255,0.4), 0 0 28px rgba(255,255,255,0.14)",
+        boxShadow:
+          "0 0 0 1px rgba(255,255,255,0.4), 0 0 28px rgba(255,255,255,0.14)",
       }}
       transition={{ type: "spring", stiffness: 320, damping: 20 }}
     >
@@ -122,7 +131,15 @@ function CursorButton({
   );
 }
 
-function UnderlineNavLink({ label, href, onClick }: { label: string; href?: string; onClick?: () => void }) {
+function UnderlineNavLink({
+  label,
+  href,
+  onClick,
+}: {
+  label: string;
+  href?: string;
+  onClick?: () => void;
+}) {
   return (
     <a
       className="aa-navLink"
@@ -138,7 +155,15 @@ function UnderlineNavLink({ label, href, onClick }: { label: string; href?: stri
   );
 }
 
-function SectionReveal({ children, className, idx }: { children: React.ReactNode; className?: string; idx: number }) {
+function SectionReveal({
+  children,
+  className,
+  idx,
+}: {
+  children: React.ReactNode;
+  className?: string;
+  idx: number;
+}) {
   const ref = useRef<HTMLDivElement | null>(null);
   useEffect(() => {
     const el = ref.current;
@@ -151,16 +176,26 @@ function SectionReveal({ children, className, idx }: { children: React.ReactNode
       onUpdate: (self: any) => {
         const p = self.progress;
         // Ease in a bit; stays subtle and premium.
-        const eased = gsap.utils.interpolate(0, 1, Math.min(1, Math.max(0, (p - 0.05) / 0.95)));
+        const eased = gsap.utils.interpolate(
+          0,
+          1,
+          Math.min(1, Math.max(0, (p - 0.05) / 0.95)),
+        );
         el.style.opacity = String(0 + eased);
         el.style.transform = `translate3d(0, ${50 * (1 - eased)}px, 0)`;
       },
     });
-    return () => { st.kill(); };
+    return () => {
+      st.kill();
+    };
   }, [idx]);
 
   return (
-    <div ref={ref} className={className ?? ""} style={{ opacity: 0, transform: "translate3d(0,50px,0)" }}>
+    <div
+      ref={ref}
+      className={className ?? ""}
+      style={{ opacity: 0, transform: "translate3d(0,50px,0)" }}
+    >
       {children}
     </div>
   );
@@ -192,7 +227,9 @@ function ParallaxBox({
         gsap.set(el, { y });
       },
     });
-    return () => { st.kill(); };
+    return () => {
+      st.kill();
+    };
   }, [speed, strength]);
 
   return <div ref={ref} className={className} />;
@@ -274,10 +311,12 @@ export default function AnalogueAgency() {
           end: "bottom 25%",
           scrub: true,
         },
-      }
+      },
     );
 
-    return () => { st.kill(); };
+    return () => {
+      st.kill();
+    };
   }, [prefersReducedMotion]);
 
   useEffect(() => {
@@ -285,7 +324,9 @@ export default function AnalogueAgency() {
     if (!root) return;
 
     // Clean up ScrollTrigger on unmount (helps when pasting into editor hot reload).
-    return () => { ScrollTrigger.getAll().forEach((t: any) => t.kill()); };
+    return () => {
+      ScrollTrigger.getAll().forEach((t: any) => t.kill());
+    };
   }, []);
 
   useEffect(() => {
@@ -295,14 +336,17 @@ export default function AnalogueAgency() {
 
     // Horizontal gallery: map vertical scroll to horizontal translate.
     const gallery = root.querySelector<HTMLElement>("[data-aa-gallery]");
-    const galleryTrack = root.querySelector<HTMLElement>("[data-aa-gallerytrack]");
+    const galleryTrack = root.querySelector<HTMLElement>(
+      "[data-aa-gallerytrack]",
+    );
     if (!gallery || !galleryTrack) return;
 
     const pinSpacer = gallery;
     const st = ScrollTrigger.create({
       trigger: gallery,
       start: "top top",
-      end: () => `+=${Math.max(0, galleryTrack.scrollWidth - gallery.clientWidth + 1)}px`,
+      end: () =>
+        `+=${Math.max(0, galleryTrack.scrollWidth - gallery.clientWidth + 1)}px`,
       scrub: true,
       pin: pinSpacer,
       anticipatePin: 1,
@@ -313,7 +357,9 @@ export default function AnalogueAgency() {
       },
     });
 
-    return () => { st.kill(); };
+    return () => {
+      st.kill();
+    };
   }, [prefersReducedMotion]);
 
   useEffect(() => {
@@ -369,7 +415,9 @@ export default function AnalogueAgency() {
       anticipatePin: 1,
       onEnter: () => gsap.set(cta, { opacity: 1 }),
     });
-    return () => { st.kill(); };
+    return () => {
+      st.kill();
+    };
   }, [prefersReducedMotion]);
 
   useEffect(() => {
@@ -378,7 +426,9 @@ export default function AnalogueAgency() {
     if (prefersReducedMotion) return;
 
     // "Scroll indicator fades after 3 seconds".
-    const indicator = root.querySelector<HTMLElement>("[data-aa-scrollindicator]");
+    const indicator = root.querySelector<HTMLElement>(
+      "[data-aa-scrollindicator]",
+    );
     if (!indicator) return;
     const to = window.setTimeout(() => {
       gsap.to(indicator, { opacity: 0, duration: 0.45, ease: "power2.out" });
@@ -411,8 +461,12 @@ export default function AnalogueAgency() {
   useEffect(() => {
     const root = rootRef.current;
     if (!root) return;
-    const galleryViewport = root.querySelector<HTMLElement>("[data-aa-galleryviewport]");
-    const galleryTrack = root.querySelector<HTMLElement>("[data-aa-gallerytrack]");
+    const galleryViewport = root.querySelector<HTMLElement>(
+      "[data-aa-galleryviewport]",
+    );
+    const galleryTrack = root.querySelector<HTMLElement>(
+      "[data-aa-gallerytrack]",
+    );
     if (!galleryViewport || !galleryTrack) return;
 
     let isDown = false;
@@ -435,7 +489,10 @@ export default function AnalogueAgency() {
       const dx = e.clientX - startX;
       // Because GSAP drives x translate, we only provide a little "feel" drag by adjusting container scroll-like offset.
       // This is intentionally subtle so ScrollTrigger remains authoritative.
-      const maxX = Math.max(0, galleryTrack.scrollWidth - galleryViewport.clientWidth);
+      const maxX = Math.max(
+        0,
+        galleryTrack.scrollWidth - galleryViewport.clientWidth,
+      );
       const currentX = Number(gsap.getProperty(galleryTrack, "x"));
       const currentOffset = -currentX; // we store horizontal offset as positive
       const nextOffset = Math.min(maxX, Math.max(0, currentOffset - dx));
@@ -453,7 +510,8 @@ export default function AnalogueAgency() {
     };
   }, []);
 
-  const heroSubtitle = "Whether it’s a product or a service, people choose with their hearts, not just their heads. We create the world your product lives in.";
+  const heroSubtitle =
+    "Whether it’s a product or a service, people choose with their hearts, not just their heads. We create the world your product lives in.";
 
   const styles = `
     :root{
@@ -1093,7 +1151,11 @@ export default function AnalogueAgency() {
   };
 
   const team = [
-    { name: "khizar arain", tag: "Full-Stack Developer", image: "/khizar-self.png" },
+    {
+      name: "khizar arain",
+      tag: "Full-Stack Developer",
+      image: "/khizar-self.png",
+    },
   ];
 
   const work = [
@@ -1114,11 +1176,20 @@ export default function AnalogueAgency() {
         <nav className="aa-nav" aria-label="Primary">
           <UnderlineNavLink
             label="Work"
-            onClick={() => rootRef.current?.querySelector<HTMLElement>("[data-aa-work]")?.scrollIntoView({ behavior: "smooth" })}
+            onClick={() =>
+              rootRef.current
+                ?.querySelector<HTMLElement>("[data-aa-work]")
+                ?.scrollIntoView({ behavior: "smooth" })
+            }
           />
+          <UnderlineNavLink label="Blog" href="/blog" />
           <UnderlineNavLink
             label="About"
-            onClick={() => rootRef.current?.querySelector<HTMLElement>("[data-aa-about]")?.scrollIntoView({ behavior: "smooth" })}
+            onClick={() =>
+              rootRef.current
+                ?.querySelector<HTMLElement>("[data-aa-about]")
+                ?.scrollIntoView({ behavior: "smooth" })
+            }
           />
         </nav>
       </header>
@@ -1153,7 +1224,11 @@ export default function AnalogueAgency() {
             className="aa-heroSubtitle"
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1], delay: 0.8 }}
+            transition={{
+              duration: 0.65,
+              ease: [0.22, 1, 0.36, 1],
+              delay: 0.8,
+            }}
           >
             {heroSubtitle}
           </motion.div>
@@ -1174,7 +1249,10 @@ export default function AnalogueAgency() {
                     {vitraAnnouncement.sub}
                   </p>
                 </div>
-                <CursorButton label="See announcement" onClick={() => setModalOpen(true)} />
+                <CursorButton
+                  label="See announcement"
+                  onClick={() => setModalOpen(true)}
+                />
               </div>
             </SectionReveal>
           </div>
@@ -1182,7 +1260,11 @@ export default function AnalogueAgency() {
             {/* Replace these placeholder layers with licensed Vitra media (images/videos). */}
             <ParallaxBox speed={0.3} className="aa-mediaLayer aa-layerA" />
             <ParallaxBox speed={0.6} className="aa-mediaLayer aa-layerB" />
-            <ParallaxBox speed={1} className="aa-mediaLayer aa-layerC" strength={64} />
+            <ParallaxBox
+              speed={1}
+              className="aa-mediaLayer aa-layerC"
+              strength={64}
+            />
             <div className="aa-mediaOverlay" />
           </div>
         </section>
@@ -1193,17 +1275,30 @@ export default function AnalogueAgency() {
             <div className="aa-grid2" data-aa-section>
               <div>
                 <h2 className="aa-h2">{vitraNewCase.heading}</h2>
-                <p className="aa-p">
-                  {vitraNewCase.sub}
-                </p>
+                <p className="aa-p">{vitraNewCase.sub}</p>
                 <div style={{ marginTop: 22 }}>
-                  <CursorButton label="Learn more" onClick={() => setLearnMoreOpen(true)} />
+                  <CursorButton
+                    label="Learn more"
+                    onClick={() => setLearnMoreOpen(true)}
+                  />
                 </div>
               </div>
               <div className="aa-media" data-aa-casemedia data-aa-section>
-                <ParallaxBox speed={0.3} className="aa-mediaLayer aa-layerA" strength={42} />
-                <ParallaxBox speed={0.6} className="aa-mediaLayer aa-layerB" strength={56} />
-                <ParallaxBox speed={1} className="aa-mediaLayer aa-layerC" strength={74} />
+                <ParallaxBox
+                  speed={0.3}
+                  className="aa-mediaLayer aa-layerA"
+                  strength={42}
+                />
+                <ParallaxBox
+                  speed={0.6}
+                  className="aa-mediaLayer aa-layerB"
+                  strength={56}
+                />
+                <ParallaxBox
+                  speed={1}
+                  className="aa-mediaLayer aa-layerC"
+                  strength={74}
+                />
                 <div className="aa-mediaOverlay" />
               </div>
             </div>
@@ -1218,7 +1313,10 @@ export default function AnalogueAgency() {
                 <div className="aa-kicker">One Man, big results.</div>
                 <h2 className="aa-h2">My self</h2>
               </div>
-              <CursorButton label="Learn more" onClick={() => setAboutMeOpen(true)} />
+              <CursorButton
+                label="Learn more"
+                onClick={() => setAboutMeOpen(true)}
+              />
             </div>
           </SectionReveal>
           <div style={{ height: 26 }} />
@@ -1227,17 +1325,30 @@ export default function AnalogueAgency() {
               <motion.div
                 key={t.name}
                 className="aa-teamCard"
-                initial={prefersReducedMotion ? undefined : { opacity: 0, y: 18 }}
-                whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
+                initial={
+                  prefersReducedMotion ? undefined : { opacity: 0, y: 18 }
+                }
+                whileInView={
+                  prefersReducedMotion ? undefined : { opacity: 1, y: 0 }
+                }
                 viewport={{ amount: 0.2, once: false }}
-                transition={{ duration: 0.45, ease: "easeOut", delay: i * 0.06 }}
+                transition={{
+                  duration: 0.45,
+                  ease: "easeOut",
+                  delay: i * 0.06,
+                }}
                 aria-label={`Team member ${t.name}`}
               >
                 <div className="aa-teamImg">
                   {t.image ? <img src={t.image} alt={t.name} /> : null}
                 </div>
                 <div className="aa-teamName">
-                  {t.name} <span style={{ color: "rgba(255,255,255,0.72)", fontWeight: 700 }}>— {t.tag}</span>
+                  {t.name}{" "}
+                  <span
+                    style={{ color: "rgba(255,255,255,0.72)", fontWeight: 700 }}
+                  >
+                    — {t.tag}
+                  </span>
                 </div>
               </motion.div>
             ))}
@@ -1258,7 +1369,13 @@ export default function AnalogueAgency() {
           <div style={{ height: 26 }} />
           <div className="aa-contactGrid" data-aa-section>
             <div className="aa-contactItem">
-              <svg className="aa-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
+              <svg
+                className="aa-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.6"
+              >
                 <path d="M4.5 7.5l7.5 5 7.5-5" />
                 <rect x="4.5" y="6" width="15" height="12.5" rx="2" />
               </svg>
@@ -1266,14 +1383,26 @@ export default function AnalogueAgency() {
               <div className="aa-contactValue">realkhizararain7@gmail.com</div>
             </div>
             <div className="aa-contactItem">
-              <svg className="aa-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
+              <svg
+                className="aa-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.6"
+              >
                 <path d="M7 3.8h2.2l1.2 4-1.2 1.2c1.5 3 3.6 5.2 6.6 6.6l1.2-1.2 4 1.2V19c0 .6-.4 1-1 1-8.6 0-15.6-7-15.6-15.6 0-.6.4-1 1-1z" />
               </svg>
               <div className="aa-contactLabel">Phone</div>
               <div className="aa-contactValue">03103080347</div>
             </div>
             <div className="aa-contactItem">
-              <svg className="aa-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
+              <svg
+                className="aa-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.6"
+              >
                 <rect x="4.8" y="6.5" width="14.2" height="14.2" rx="2" />
                 <path d="M8 3.8v5" />
                 <path d="M16 3.8v5" />
@@ -1298,9 +1427,12 @@ export default function AnalogueAgency() {
           <div className="aa-servicesGrid" data-aa-section>
             <div className="aa-serviceBlock">
               <div>
-                <div className="aa-serviceTitle">Front end And Back end. Developer</div>
+                <div className="aa-serviceTitle">
+                  Front end And Back end. Developer
+                </div>
                 <div className="aa-serviceDesc">
-                  We define your brand through strategy, branding design and touchpoints.
+                  We define your brand through strategy, branding design and
+                  touchpoints.
                 </div>
               </div>
               <div style={{ height: 8 }} />
@@ -1309,7 +1441,8 @@ export default function AnalogueAgency() {
               <div>
                 <div className="aa-serviceTitle">(no-code) E-commerce</div>
                 <div className="aa-serviceDesc">
-                  Over 2 years of experience in e-commerce. We partner with Shopify plus partners for development.
+                  Over 2 years of experience in e-commerce. We partner with
+                  Shopify plus partners for development.
                 </div>
               </div>
               <div style={{ height: 8 }} />
@@ -1330,9 +1463,17 @@ export default function AnalogueAgency() {
 
           <div className="aa-gallery" data-aa-section>
             <div className="aa-galleryViewport" data-aa-galleryviewport>
-              <div className="aa-galleryTrack" data-aa-gallerytrack data-aa-gallery>
+              <div
+                className="aa-galleryTrack"
+                data-aa-gallerytrack
+                data-aa-gallery
+              >
                 {work.map((p, i) => (
-                  <div key={p.name + i} className="aa-workCard" aria-label={`Project ${p.name}`}>
+                  <div
+                    key={p.name + i}
+                    className="aa-workCard"
+                    aria-label={`Project ${p.name}`}
+                  >
                     <div className="aa-workImg" />
                     <div className="aa-workOverlay" />
                     <div className="aa-workTitle">
@@ -1353,7 +1494,8 @@ export default function AnalogueAgency() {
               About Us
             </h2>
             <p className="aa-aboutBig">
-              Khizar Arain is an award-winning design professional. I help businesses at critical touchpoints define, and build new futures.
+              Khizar Arain is an award-winning design professional. I help
+              businesses at critical touchpoints define, and build new futures.
             </p>
           </SectionReveal>
         </section>
@@ -1384,17 +1526,30 @@ export default function AnalogueAgency() {
             </a>
           </div>
           <div>
-            <div style={{ fontWeight: 800, color: "rgba(255,255,255,0.78)", marginBottom: 10 }}>
+            <div
+              style={{
+                fontWeight: 800,
+                color: "rgba(255,255,255,0.78)",
+                marginBottom: 10,
+              }}
+            >
               © {new Date().getFullYear()} khizar arain
             </div>
             <div className="aa-social" aria-label="Social links">
               <a href="https://x.com/KhizarArain103" aria-label="Twitter">
                 X
               </a>
-              <a href="https://www.instagram.com/realkhizerarain/" aria-label="Instagram">
+              <a
+                href="https://www.instagram.com/realkhizerarain/"
+                aria-label="Instagram"
+              >
                 IG
               </a>
-              <a href="#" onClick={(e) => e.preventDefault()} aria-label="Behance">
+              <a
+                href="#"
+                onClick={(e) => e.preventDefault()}
+                aria-label="Behance"
+              >
                 BE
               </a>
             </div>
@@ -1402,33 +1557,49 @@ export default function AnalogueAgency() {
         </div>
       </footer>
 
-      <Modal open={modalOpen} title="Website of the Year" onClose={() => setModalOpen(false)}>
+      <Modal
+        open={modalOpen}
+        title="Website of the Year"
+        onClose={() => setModalOpen(false)}
+      >
         <p style={{ marginTop: 0 }}>
-          Our latest case for Vitra has won Framer Website of the Year. Replace this copy with your announcement details.
+          Our latest case for Vitra has won Framer Website of the Year. Replace
+          this copy with your announcement details.
         </p>
         <p>
-          For pixel-perfect reproduction you would also replace the placeholder media with licensed Vitra assets (images/videos) and match exact
+          For pixel-perfect reproduction you would also replace the placeholder
+          media with licensed Vitra assets (images/videos) and match exact
           dimensions.
         </p>
       </Modal>
 
-      <Modal open={learnMoreOpen} title="Learn more" onClose={() => setLearnMoreOpen(false)}>
+      <Modal
+        open={learnMoreOpen}
+        title="Learn more"
+        onClose={() => setLearnMoreOpen(false)}
+      >
         <p style={{ marginTop: 0 }}>
-          We’re proud to announce our latest case with Vitra: 100 years Panton. Replace this section with the real case study preview
-          content.
+          We’re proud to announce our latest case with Vitra: 100 years Panton.
+          Replace this section with the real case study preview content.
         </p>
       </Modal>
 
-      <Modal open={aboutMeOpen} title="About me" onClose={() => setAboutMeOpen(false)}>
+      <Modal
+        open={aboutMeOpen}
+        title="About me"
+        onClose={() => setAboutMeOpen(false)}
+      >
         <p style={{ marginTop: 0 }}>
-          I am Khizar Arain, a Full-Stack Developer focused on building clean, modern, and high-performing digital experiences.
+          I am Khizar Arain, a Full-Stack Developer focused on building clean,
+          modern, and high-performing digital experiences.
         </p>
         <p>
-          I work across front end and back end, with strong practical experience in e-commerce and production-ready web development.
-          My goal is simple: turn ideas into websites and products that look premium, load fast, and deliver real business results.
+          I work across front end and back end, with strong practical experience
+          in e-commerce and production-ready web development. My goal is simple:
+          turn ideas into websites and products that look premium, load fast,
+          and deliver real business results.
         </p>
       </Modal>
     </div>
   );
 }
-

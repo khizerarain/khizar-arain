@@ -14,6 +14,20 @@ export default async function BlogPage() {
   return (
     <main className="min-h-screen bg-black text-white">
       <section className="max-w-6xl mx-auto px-6 py-20">
+        <nav className="mb-10 flex flex-wrap items-center justify-center gap-4 rounded-full border border-white/10 bg-white/5 px-5 py-3 text-sm text-gray-200">
+          <Link href="/" className="transition hover:text-white">
+            Home
+          </Link>
+          <span className="text-gray-500">/</span>
+          <Link href="/blog" className="font-semibold text-white">
+            Blog
+          </Link>
+          <span className="text-gray-500">/</span>
+          <Link href="/contact" className="transition hover:text-white">
+            Contact
+          </Link>
+        </nav>
+
         <div className="space-y-6 text-center mb-12">
           <p className="text-sm uppercase tracking-[0.3em] text-blue-400">
             Blog

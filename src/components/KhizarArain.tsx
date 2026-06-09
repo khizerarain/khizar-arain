@@ -1158,7 +1158,7 @@ export default function AnalogueAgency() {
     },
   ];
 
-  const work = [
+  const projects = [
     { name: "Vitra", tag: "Case" },
     { name: "Studio Atlas", tag: "Brand" },
     { name: "North & Co.", tag: "Digital" },
@@ -1175,10 +1175,10 @@ export default function AnalogueAgency() {
         <div className="aa-brand">khizar arain</div>
         <nav className="aa-nav" aria-label="Primary">
           <UnderlineNavLink
-            label="Work"
+            label="Projects"
             onClick={() =>
               rootRef.current
-                ?.querySelector<HTMLElement>("[data-aa-work]")
+                ?.querySelector<HTMLElement>("[data-aa-projects]")
                 ?.scrollIntoView({ behavior: "smooth" })
             }
           />
@@ -1450,12 +1450,16 @@ export default function AnalogueAgency() {
           </div>
         </section>
 
-        {/* 6: my work */}
-        <section className="aa-section aa-workWrap" data-aa-work id="work">
+        {/* 6: my projects */}
+        <section
+          className="aa-section aa-projectsWrap"
+          data-aa-projects
+          id="projects"
+        >
           <SectionReveal idx={6}>
             <div className="aa-row" style={{ marginBottom: 12 }}>
               <div>
-                <h2 className="aa-h2">my work</h2>
+                <h2 className="aa-h2">my projects</h2>
               </div>
               <CursorButton label="See all" />
             </div>
@@ -1468,17 +1472,17 @@ export default function AnalogueAgency() {
                 data-aa-gallerytrack
                 data-aa-gallery
               >
-                {work.map((p, i) => (
+                {projects.map((p, i) => (
                   <div
                     key={p.name + i}
-                    className="aa-workCard"
+                    className="aa-projectCard"
                     aria-label={`Project ${p.name}`}
                   >
-                    <div className="aa-workImg" />
-                    <div className="aa-workOverlay" />
-                    <div className="aa-workTitle">
+                    <div className="aa-projectImg" />
+                    <div className="aa-projectOverlay" />
+                    <div className="aa-projectTitle">
                       <div>{p.name}</div>
-                      <div className="aa-workTag">{p.tag}</div>
+                      <div className="aa-projectTag">{p.tag}</div>
                     </div>
                   </div>
                 ))}
@@ -1512,8 +1516,8 @@ export default function AnalogueAgency() {
       <footer>
         <div className="aa-footerRow">
           <div className="aa-footerLinks" aria-label="Footer links">
-            <a className="aa-footerLink" href="#work">
-              Work
+            <a className="aa-footerLink" href="#projects">
+              Projects
             </a>
             <a className="aa-footerLink" href="#about">
               About

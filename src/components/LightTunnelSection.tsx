@@ -1,13 +1,13 @@
-'use client';
+"use client";
 
-import React, { useRef, useEffect, useState } from 'react';
-import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
+import React, { useRef, useEffect, useState } from "react";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 
 export default function LightTunnelSection() {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ['start start', 'end start'],
+    offset: ["start start", "end start"],
   });
 
   const [isMounted, setIsMounted] = useState(false);
@@ -16,31 +16,57 @@ export default function LightTunnelSection() {
     setIsMounted(true);
   }, []);
 
-  const mainTextOpacity = useTransform(scrollYProgress, [0, 0.25, 0.5], [0, 1, 1]);
-  const mainTextScale = useTransform(scrollYProgress, [0, 0.25, 0.5], [0.8, 1, 0.9]);
+  const mainTextOpacity = useTransform(
+    scrollYProgress,
+    [0, 0.25, 0.5],
+    [0, 1, 1],
+  );
+  const mainTextScale = useTransform(
+    scrollYProgress,
+    [0, 0.25, 0.5],
+    [0.8, 1, 0.9],
+  );
 
   const leftSplitX = useTransform(scrollYProgress, [0.25, 0.5], [0, -60]);
   const rightSplitX = useTransform(scrollYProgress, [0.25, 0.5], [0, 60]);
-  const splitOpacity = useTransform(scrollYProgress, [0.25, 0.5, 1], [0, 0.8, 0.6]);
+  const splitOpacity = useTransform(
+    scrollYProgress,
+    [0.25, 0.5, 1],
+    [0, 0.8, 0.6],
+  );
 
-  const paragraphOpacity = useTransform(scrollYProgress, [0.45, 0.65, 1], [0, 1, 1]);
+  const paragraphOpacity = useTransform(
+    scrollYProgress,
+    [0.45, 0.65, 1],
+    [0, 1, 1],
+  );
   const paragraphY = useTransform(scrollYProgress, [0.45, 0.65], [40, 0]);
 
-  const scrollIndicatorOpacity = useTransform(scrollYProgress, [0, 0.15], [1, 0]);
+  const scrollIndicatorOpacity = useTransform(
+    scrollYProgress,
+    [0, 0.15],
+    [1, 0],
+  );
 
   const backgroundParallax = useTransform(scrollYProgress, [0, 1], [0, -80]);
   const glowScale = useTransform(scrollYProgress, [0, 0.5, 1], [1, 1.2, 1.1]);
 
-  const glowOpacity = useTransform(scrollYProgress, [0, 0.3, 1], [0.6, 0.8, 0.7]);
+  const glowOpacity = useTransform(
+    scrollYProgress,
+    [0, 0.3, 1],
+    [0.6, 0.8, 0.7],
+  );
 
   return (
     <>
       {/* Fixed Navbar */}
       <nav className="fixed top-0 left-0 right-0 z-50 px-8 py-6 backdrop-blur-md bg-black/10">
         <div className="flex items-center justify-between max-w-7xl mx-auto">
-          <div className="text-white text-2xl font-bold tracking-wider">Khizar Arain</div>
+          <div className="text-white text-2xl font-bold tracking-wider">
+            Khizar Arain
+          </div>
           <div className="flex gap-12 items-center">
-            <NavLink href="#work" label="WORK" />
+            <NavLink href="#projects" label="PROJECTS" />
             <NavLink href="#services" label="SERVICES" />
             <NavLink href="#about" label="ABOUT" />
           </div>

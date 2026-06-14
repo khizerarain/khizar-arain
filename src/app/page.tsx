@@ -1,7 +1,20 @@
-"use client";
+import Hero from "@/components/sections/Hero";
+import FeaturedProjects from "@/components/sections/FeaturedProjects";
+import Services from "@/components/sections/Services";
+import About from "@/components/sections/About";
+import Contact from "@/components/sections/Contact";
+import { getFeaturedProjects } from "@/lib/projects";
 
-import AnalogueAgency from "@/components/KhizarArain";
+export default async function Home() {
+  const projects = await getFeaturedProjects();
 
-export default function Home() {
-  return <AnalogueAgency />;
+  return (
+    <>
+      <Hero />
+      <FeaturedProjects projects={projects} />
+      <Services />
+      <About />
+      <Contact />
+    </>
+  );
 }

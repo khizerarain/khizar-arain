@@ -1,24 +1,44 @@
-import React from "react";
-import { supabase } from "../../lib/supabase";
-import ProjectGrid from "../../components/projects/ProjectGrid";
-import FeaturedProjects from "../../components/projects/FeaturedProjects";
+import type { Metadata } from "next";
+import {
+  getAllProjects,
+  getProjectCategories,
+  getProjectTechnologies,
+} from "@/lib/projects";
+import ProjectsList from "@/components/projects/ProjectsList";
 
-export const revalidate = 60; // cache for 60s
+export const metadata: Metadata = {
+  title: "Projects",
+  description:
+    "Explore a selection of web development, e-commerce, and brand projects by Khizar Arain.",
+};
 
 export default async function ProjectsPage() {
-  const { data: projects } = await supabase
-    .from("projects")
-    .select("*")
-    .order("created_at", { ascending: false });
+  const projects = await getAllProjects();
+  const categories = await getProjectCategories();
+  const technologies = await getProjectTechnologies();
 
   return (
-    <main className="max-w-7xl mx-auto p-6">
-      <h1 className="text-3xl font-bold mb-4">Projects</h1>
-      <FeaturedProjects
-        projects={(projects || []).filter((p: any) => p.featured)}
-      />
-      <div style={{ height: 28 }} />
-      <ProjectGrid projects={projects || []} />
-    </main>
+    <div className="min-h-screen bg-black pt-32 pb-24">
+      <div className="mx-auto max-w-6xl px-6">
+        <div className="mb-12 text-center">
+          <p className="mb-3 text-sm font-medium uppercase tracking-[0.2em] text-neutral-500">
+            Portfolio
+          </p>
+          <h1 className="text-4xl font-bold tracking-tight text-white md:text-5xl">
+            Projects
+          </h1>
+          <p className="mx-auto mt-4 max-w-2xl text-neutral-400">
+            A collection of work spanning frontend development, e-commerce, and
+            brand experiences.
+          </p>
+        </div>
+
+        <ProjectsList
+          projects={projects}
+          categories={categories}
+          technologies={technologies}
+        />
+      </div>
+    </div>
   );
 }

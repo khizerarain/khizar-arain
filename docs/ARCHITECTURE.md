@@ -2,226 +2,147 @@
 
 ## Project Stack
 
-- **Framework**: Next.js 14+ (App Router)
+- **Framework**: Next.js 16+ (App Router)
 - **Language**: TypeScript
-- **Styling**: CSS-in-JS / Framer Motion / GSAP
-- **Animations**: 
-  - GSAP (timeline, ScrollTrigger, easing)
-  - Framer Motion (component animations)
-- **Scroll**: Lenis (smooth scroll library)
+- **Styling**: Tailwind CSS v4 + shadcn/ui (Base UI primitives)
+- **Animations**: Framer Motion, GSAP, Lenis (smooth scroll)
+- **Content**: Markdown files with frontmatter (`gray-matter`)
+- **Markdown rendering**: `react-markdown`, `remark-gfm`, `rehype-highlight`, `rehype-slug`
+- **Icons**: lucide-react
 - **Linting**: ESLint
-- **Styling**: PostCSS
+
+## Design Direction
+
+The site follows a minimal, clean aesthetic inspired by the Codex design system and Apple design guidelines:
+
+- Near-black background (`#050505`) with subtle noise overlay.
+- Generous whitespace and centered, readable typography.
+- Soft white borders at low opacity for separation.
+- Rounded buttons, cards, and inputs.
+- Restrained motion: smooth fades, subtle lifts, and hover transitions.
+
+## Content Pipeline
+
+All content is file-based. There is no database and no admin UI.
+
+```
+content/
+├── blog/           # One .md file per blog post
+└── projects/       # One .md file per project
+```
+
+Frontmatter is parsed with `gray-matter`. Markdown is rendered with `react-markdown` and syntax-highlighted code blocks.
+
+To add a new post or project, drop a `.md` file into the correct directory. The Next.js build will generate the corresponding static page.
+
+## Data Layer
+
+- `src/lib/content.ts` — low-level Markdown file reading and parsing.
+- `src/lib/blog.ts` — blog-specific queries (`getAllPosts`, `getPostBySlug`, etc.).
+- `src/lib/projects.ts` — project-specific queries (`getAllProjects`, `getProjectBySlug`, etc.).
+- `src/lib/utils.ts` — shared helpers (`cn`, `formatDate`, `calculateReadingTime`).
 
 ## Component Structure
 
-### Main Component: `KhizarArain.tsx`
+### Layout
 
-The main portfolio component (`src/components/KhizarArain.tsx`) is a comprehensive React component that handles:
+- `src/app/layout.tsx` — root layout, loads Inter font, dark theme, noise overlay, navbar, and footer.
+- `src/components/layout/Navbar.tsx` — fixed top navigation with mobile sheet menu.
+- `src/components/layout/Footer.tsx` — site footer with social links.
 
-#### Features
-1. **Smooth Scrolling**: Integrated Lenis library for cinematic scroll
-2. **GSAP Animations**: 
-   - Letter-spacing scrub on hero section
-   - Parallax backgrounds
-   - Section reveals on scroll
-   - Gallery horizontal scroll with pin
-   - CTA section pin effect
-   - Header blur/transparency on scroll
+### Pages
 
-3. **Framer Motion**: 
-   - Hero title letter stagger
-   - Modal animations
-   - Button hover effects
-   - Section reveal animations
+- `src/app/page.tsx` — homepage composed of section components.
+- `src/app/projects/page.tsx` — project listing with category and technology filters.
+- `src/app/projects/[slug]/page.tsx` — dynamic project detail page.
+- `src/app/blog/page.tsx` — blog listing with search, category, and tag filters.
+- `src/app/blog/[slug]/page.tsx` — dynamic blog post detail page.
+- `src/app/about/page.tsx` — about page with bio, skills, and experience.
+- `src/app/contact/page.tsx` — contact page with direct contact methods.
 
-4. **Interactive Elements**:
-   - Modals with smooth open/close
-   - Hover effects on buttons and cards
-   - Gallery with drag-to-scroll and scroll-driven animation
-   - Team cards with hover reveal
+### Homepage Sections
 
-#### Sub-Components (Internal)
+- `src/components/home/HeroSection.tsx`
+- `src/components/home/AboutSection.tsx`
+- `src/components/home/SkillsSection.tsx`
+- `src/components/home/ProjectsSection.tsx`
+- `src/components/home/BlogSection.tsx`
+- `src/components/home/ContactSection.tsx`
 
-- **Modal**: Reusable modal with enter/exit animations
-- **HeroTitle**: Letter-stagger animation for title
-- **CursorButton**: Interactive button with sheen effect
-- **UnderlineNavLink**: Navigation link with underline animation
-- **SectionReveal**: Scroll-triggered section reveal
-- **ParallaxBox**: Scroll-driven parallax effect
+### Reusable Components
 
-#### Hooks
+- `src/components/projects/ProjectCard.tsx`
+- `src/components/projects/ProjectsList.tsx`
+- `src/components/blog/BlogCard.tsx`
+- `src/components/blog/BlogList.tsx`
+- `src/components/content/MarkdownRenderer.tsx`
 
-- **usePrefersReducedMotion**: Respects user's motion preferences
-- Custom useEffect hooks for:
-  - Hero animations
-  - Gallery functionality
-  - Lenis smooth scroll
-  - CTA pinning
-  - Scroll indicator
-  - Header blur effect
-  - Gallery drag-to-scroll
+### UI Primitives
 
-#### State Management
+- `src/components/ui/button.tsx`
+- `src/components/ui/card.tsx`
+- `src/components/ui/badge.tsx`
+- `src/components/ui/input.tsx`
+- `src/components/ui/separator.tsx`
+- `src/components/ui/sheet.tsx`
+- `src/components/ui/dialog.tsx`
+- `src/components/ui/select.tsx`
+- `src/components/ui/tooltip.tsx`
+- `src/components/ui/avatar.tsx`
 
-Uses React's built-in hooks:
-- `useState` for modal visibility
-- `useRef` for DOM element references
-- `useEffect` for scroll and animation setup
-- `useMemo` for letter splitting
+## Static Generation
 
-#### Performance Considerations
+Dynamic routes use `generateStaticParams` so every blog post and project is pre-rendered at build time:
 
-1. **ScrollTrigger Cleanup**: Kills all triggers on unmount
-2. **RequestAnimationFrame**: Used for smooth animations
-3. **will-change CSS**: Applied to animated elements
-4. **Reduced Motion Support**: Respects prefers-reduced-motion
-5. **Event Delegation**: Efficient event listening
-
-### SmoothScrolling Component
-
-Utility component (`src/components/SmoothScrolling.tsx`) for scroll-related functionality.
-
-## Data Flow
-
-```
-App (Next.js Page)
-    ↓
-├─→ Layout (global context)
-│   └─→ Globals CSS (theme variables)
-│
-└─→ KhizarArain Component
-    ├─→ useEffect (animations setup)
-    ├─→ useState (modal state)
-    ├─→ Sections (content sections)
-    │   ├─→ Hero Section
-    │   ├─→ Work Cases
-    │   ├─→ Team
-    │   ├─→ Contact
-    │   ├─→ Services
-    │   ├─→ Gallery
-    │   ├─→ About
-    │   └─→ CTA
-    │
-    └─→ Sub-Components
-        ├─→ Modal
-        ├─→ HeroTitle
-        ├─→ CursorButton
-        ├─→ UnderlineNavLink
-        ├─→ SectionReveal
-        └─→ ParallaxBox
+```txt
+/blog/[slug]
+/projects/[slug]
 ```
 
-## Styling Architecture
+Additional generated routes:
 
-### CSS Organization
-
-1. **Global Styles**: Defined within component using CSS-in-JS
-2. **CSS Variables**: Theme values (colors, spacing)
-3. **Component Scoping**: Class names prefixed with `aa-` (analog-agency)
-4. **Responsive Design**: Mobile-first with breakpoints
-
-### Animation Patterns
-
-1. **GSAP ScrollTrigger**: For scroll-driven animations
-2. **Framer Motion**: For component-level animations
-3. **CSS Transitions**: For simple hover effects
-4. **Keyframe Animations**: For repeating effects
-
-## UX/Accessibility
-
-- **Reduced Motion Support**: Disables animations for users who prefer it
-- **Keyboard Navigation**: All interactive elements are keyboard accessible
-- **ARIA Labels**: Proper labels for screen readers
-- **Focus Management**: Modal handles focus properly
-- **Semantic HTML**: Uses proper heading hierarchy
-
-## Future Improvements
-
-### Refactoring Opportunities
-
-1. **Extract to Custom Hooks**:
-   ```typescript
-   - useScrollAnimations()
-   - useGalleryScroll()
-   - useModalState()
-   ```
-
-2. **Extract Sub-Components**:
-   ```typescript
-   - Hero/
-   - Work/
-   - Team/
-   - Contact/
-   - Services/
-   - Gallery/
-   ```
-
-3. **Move Constants**:
-   ```typescript
-   - src/constants/animations.ts
-   - src/constants/content.ts
-   - src/constants/breakpoints.ts
-   ```
-
-4. **Type Definitions**:
-   ```typescript
-   - src/types/components.ts (component props)
-   - src/types/animations.ts (animation configs)
-   ```
-
-### Performance Enhancements
-
-1. **Code Splitting**: Lazy load sections
-2. **Image Optimization**: Use Next.js Image component
-3. **Memoization**: Memo heavy components
-4. **Animation Debounce**: Throttle scroll events
-
-### Features to Add
-
-1. **Dark/Light Mode**: Theme switching
-2. **Analytics**: Track user interactions
-3. **Content Management**: Move content to data files
-4. **Internationalization**: Multi-language support
+- `/sitemap.xml` — generated by `src/app/sitemap.ts`.
+- `/rss.xml` — generated by `src/app/rss.xml/route.ts`.
 
 ## Build & Deployment
 
-### Build Process
 ```bash
-npm run build  # Creates optimized production bundle
+pnpm install
+pnpm build
+pnpm start
 ```
 
-### Output
-- `.next/` directory contains optimized code
-- Static exports possible with `output: 'export'` config
+During development:
 
-### Production Optimizations
-- Code splitting
-- Image optimization
-- CSS minification
-- JavaScript minification
-- Asset compression
+```bash
+pnpm dev
+```
 
-## Security Considerations
+## Adding Content
 
-- No sensitive data in client components
-- Validate all user inputs
-- Use HTTPS in production
-- Regular dependency updates
-- Security headers in `next.config.ts`
+See `docs/CONTENT-GUIDE.md` for the full authoring guide.
 
-## Browser Support
+Quick example for a new blog post:
 
-- Modern browsers (Chrome, Firefox, Safari, Edge)
-- Smooth Scroll API support
-- CSS Grid and Flexbox support
-- ES2020 JavaScript features
+```md
+---
+title: "My New Post"
+slug: "my-new-post"
+excerpt: "A short summary."
+coverImage: "https://example.com/image.jpg"
+category: "Development"
+tags: ["Next.js", "Tailwind"]
+createdAt: "2026-06-12T00:00:00Z"
+updatedAt: "2026-06-12T00:00:00Z"
+featured: false
+---
 
-## Environment Variables
+# My New Post
 
-Currently not required, but can be added for:
-- API endpoints
-- Analytics keys
-- Feature flags
-- Theme configuration
+Write your content here in Markdown.
+```
 
-Create `.env.local` when needed.
+## Notes
+
+- Supabase and the admin CRUD UI were removed. All content now lives in Git-tracked Markdown files.
+- The old monolithic `KhizarArain.tsx` homepage was replaced with modular section components.

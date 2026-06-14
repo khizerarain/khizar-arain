@@ -1,94 +1,52 @@
-import { Metadata } from "next";
-import Link from "next/link";
-import { getAllPosts } from "@/lib/blog";
+import type { Metadata } from "next";
+import {
+  getAllPosts,
+  getCategories,
+  getFeaturedPosts,
+  getTags,
+} from "@/lib/blog";
+import BlogCard from "@/components/blog/BlogCard";
+import BlogList from "@/components/blog/BlogList";
 
 export const metadata: Metadata = {
-  title: "Blog | Khizar Arain",
+  title: "Blog",
   description:
-    "Read the latest articles on web design, development, and personal branding.",
+    "Read the latest articles on web design, development, and personal branding by Khizar Arain.",
 };
 
 export default async function BlogPage() {
   const posts = await getAllPosts();
+  const featured = await getFeaturedPosts();
+  const categories = await getCategories();
+  const tags = await getTags();
 
   return (
-    <main className="min-h-screen bg-black text-white">
-      <section className="max-w-6xl mx-auto px-6 py-20">
-        <nav className="mb-10 flex flex-wrap items-center justify-center gap-4 rounded-full border border-white/10 bg-white/5 px-5 py-3 text-sm text-gray-200">
-          <Link href="/" className="transition hover:text-white">
-            Home
-          </Link>
-          <span className="text-gray-500">/</span>
-          <Link href="/blog" className="font-semibold text-white">
-            Blog
-          </Link>
-          <span className="text-gray-500">/</span>
-          <Link href="/contact" className="transition hover:text-white">
-            Contact
-          </Link>
-        </nav>
-
-        <div className="space-y-6 text-center mb-12">
-          <p className="text-sm uppercase tracking-[0.3em] text-blue-400">
+    <div className="min-h-screen bg-black pt-32 pb-24">
+      <div className="mx-auto max-w-6xl px-6">
+        <div className="mb-12 text-center">
+          <p className="mb-3 text-sm font-medium uppercase tracking-[0.2em] text-neutral-500">
             Blog
           </p>
-          <h1 className="text-4xl md:text-5xl font-semibold tracking-tight">
-            Insights on design, development, and building a standout personal
-            brand.
+          <h1 className="text-4xl font-bold tracking-tight text-white md:text-5xl">
+            Insights & Ideas
           </h1>
-          <p className="mx-auto max-w-2xl text-gray-300 text-base md:text-lg leading-8">
-            Explore practical articles, case studies, and front-end best
-            practices written for ambitious creators.
+          <p className="mx-auto mt-4 max-w-2xl text-neutral-400">
+            Practical articles, case studies, and frontend best practices for
+            ambitious creators.
           </p>
         </div>
 
-        <div className="grid gap-8 lg:grid-cols-3">
-          {posts.map((post) => (
-            <article
-              key={post.id}
-              className="group rounded-3xl border border-white/10 bg-white/5 p-6 transition-shadow duration-300 hover:border-blue-400/40 hover:shadow-[0_30px_80px_-40px_rgba(59,130,246,0.6)]"
-            >
-              {post.coverImage ? (
-                <div className="overflow-hidden rounded-3xl mb-5 h-52 bg-slate-900">
-                  <img
-                    src={post.coverImage}
-                    alt={post.title}
-                    className="h-full w-full object-cover transition duration-300 group-hover:scale-105"
-                  />
-                </div>
-              ) : null}
-              <div className="space-y-4">
-                <div className="text-sm text-blue-300 uppercase tracking-[0.24em] font-semibold">
-                  {post.category}
-                </div>
-                <h2 className="text-2xl font-semibold tracking-tight text-white">
-                  {post.title}
-                </h2>
-                <p className="text-gray-300 leading-7">{post.excerpt}</p>
-                <div className="flex flex-wrap gap-2 text-xs text-gray-400">
-                  {post.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="rounded-full border border-white/10 px-3 py-1"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-                <div className="mt-4">
-                  <Link
-                    href={`/blog/${post.slug}`}
-                    className="inline-flex items-center gap-2 text-sm font-semibold text-blue-300 transition hover:text-white"
-                  >
-                    Read article
-                    <span aria-hidden="true">→</span>
-                  </Link>
-                </div>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
-    </main>
+        {featured.length > 0 && (
+          <div className="mb-16">
+            <p className="mb-4 text-sm font-medium uppercase tracking-[0.2em] text-neutral-500">
+              Featured
+            </p>
+            <BlogCard post={featured[0]} featured />
+          </div>
+        )}
+
+        <BlogList posts={posts} categories={categories} tags={tags} />
+      </div>
+    </div>
   );
 }

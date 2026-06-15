@@ -40,7 +40,7 @@ export default function Navbar() {
       )}
     >
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <Link href="/" className="flex items-center gap-3">
+        <Link href="/" className="flex items-center gap-1.5">
           <Image
             src="/images/navbar-icon.png"
             alt="Khizar Arain"
@@ -80,7 +80,7 @@ export default function Navbar() {
             className="w-full border-white/10 bg-black/95 backdrop-blur-xl"
           >
             <div className="flex flex-col gap-6 pt-10">
-              <div className="flex items-center justify-between gap-3">
+              <div className="flex items-center justify-between gap-0.5">
                 <Image
                   src="/images/navbar-icon.png"
                   alt="Khizar Arain"

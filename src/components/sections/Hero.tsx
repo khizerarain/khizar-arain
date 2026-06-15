@@ -9,11 +9,13 @@ import { ArrowDown, ArrowRight } from "lucide-react";
 export default function Hero() {
   return (
     <section className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-6 pt-20">
-      {/* Background gradients */}
-      <div className="pointer-events-none absolute inset-0" aria-hidden="true">
-        <div className="absolute left-1/4 top-1/4 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/[0.03] blur-3xl" />
-        <div className="absolute bottom-1/4 right-1/4 h-[600px] w-[600px] translate-x-1/3 translate-y-1/3 rounded-full bg-white/[0.02] blur-3xl" />
-      </div>
+      {/* Background image */}
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: "url('/images/hero-bg.png')" }}
+        aria-hidden="true"
+      />
+      <div className="absolute inset-0 bg-black/60" aria-hidden="true" />
 
       <div className="relative z-10 mx-auto max-w-5xl text-center">
         <motion.p

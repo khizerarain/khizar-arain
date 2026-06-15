@@ -40,15 +40,18 @@ export default function Navbar() {
       )}
     >
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <Link href="/" className="flex items-center">
+        <Link href="/" className="flex items-center gap-3">
           <Image
-            src="/images/logo.webp"
+            src="/images/navbar-icon.png"
             alt="Khizar Arain"
-            width={120}
+            width={40}
             height={40}
             className="h-8 w-auto object-contain"
             priority
           />
+          <span className="text-lg font-bold tracking-tight text-white">
+            khizar arain
+          </span>
         </Link>
 
         {/* Desktop nav */}
@@ -77,15 +80,18 @@ export default function Navbar() {
             className="w-full border-white/10 bg-black/95 backdrop-blur-xl"
           >
             <div className="flex flex-col gap-6 pt-10">
-              <div className="flex items-center justify-between">
+              <div className="flex items-center justify-between gap-3">
                 <Image
-                  src="/images/logo.webp"
+                  src="/images/navbar-icon.png"
                   alt="Khizar Arain"
-                  width={120}
+                  width={40}
                   height={40}
                   className="h-8 w-auto object-contain"
                   priority
                 />
+                <span className="text-lg font-bold text-white">
+                  khizar arain
+                </span>
               </div>
               {navLinks.map((link) => (
                 <Link

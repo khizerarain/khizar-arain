@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -39,11 +40,15 @@ export default function Navbar() {
       )}
     >
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <Link
-          href="/"
-          className="text-lg font-bold tracking-tight text-white"
-        >
-          khizar arain
+        <Link href="/" className="flex items-center">
+          <Image
+            src="/images/logo.webp"
+            alt="Khizar Arain"
+            width={120}
+            height={40}
+            className="h-8 w-auto object-contain"
+            priority
+          />
         </Link>
 
         {/* Desktop nav */}
@@ -73,9 +78,14 @@ export default function Navbar() {
           >
             <div className="flex flex-col gap-6 pt-10">
               <div className="flex items-center justify-between">
-                <span className="text-lg font-bold text-white">
-                  khizar arain
-                </span>
+                <Image
+                  src="/images/logo.webp"
+                  alt="Khizar Arain"
+                  width={120}
+                  height={40}
+                  className="h-8 w-auto object-contain"
+                  priority
+                />
               </div>
               {navLinks.map((link) => (
                 <Link

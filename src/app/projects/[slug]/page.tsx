@@ -54,6 +54,19 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
   const related = await getRelatedProjects(slug, 2);
 
+  const pypiInfo =
+    project.slug === "utopia"
+      ? {
+          url: "https://pypi.org/project/utopia-analyzer",
+          install: "pip install utopia-analyzer",
+        }
+      : project.slug === "atlas"
+        ? {
+            url: "https://pypi.org/project/atlas-world-intel",
+            install: "pip install atlas-world-intel",
+          }
+        : null;
+
   return (
     <div className="min-h-screen bg-black pt-32 pb-24">
       <div className="mx-auto max-w-4xl px-6">
@@ -137,23 +150,23 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           )}
         </div>
 
-        {project.slug === "utopia" && (
+        {pypiInfo && (
           <div className="mt-4 w-full rounded-full border border-white/10 bg-white/[0.02] px-4 py-3 text-sm text-neutral-300">
             <div className="flex flex-wrap items-center gap-2">
               <span className="font-medium text-white">PyPI:</span>
               <a
-                href="https://pypi.org/project/utopia-analyzer"
+                href={pypiInfo.url}
                 target="_blank"
                 rel="noreferrer"
                 className="text-cyan-400 transition-colors hover:text-cyan-300"
               >
-                https://pypi.org/project/utopia-analyzer
+                {pypiInfo.url}
               </a>
             </div>
             <div className="mt-2 flex flex-wrap items-center gap-2">
               <span className="font-medium text-white">Install:</span>
               <code className="rounded bg-white/10 px-2 py-1 font-mono text-xs text-neutral-200">
-                pip install utopia-analyzer
+                {pypiInfo.install}
               </code>
             </div>
           </div>

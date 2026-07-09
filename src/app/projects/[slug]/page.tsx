@@ -65,7 +65,12 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             url: "https://pypi.org/project/atlas-world-intel",
             install: "pip install atlas-world-intel",
           }
-        : null;
+        : project.slug === "sentinel"
+          ? {
+              url: "https://pypi.org/project/sentinel-recon",
+              install: "pip install sentinel-recon",
+            }
+          : null;
 
   return (
     <div className="min-h-screen bg-black pt-32 pb-24">

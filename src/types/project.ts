@@ -9,6 +9,8 @@ export interface Project {
   technologies: string[];
   category: string;
   githubUrl?: string;
+  pypiUrl?: string;
+  pypiInstallCommand?: string;
   liveDemoUrl?: string;
   featured: boolean;
   status: string;
@@ -24,6 +26,8 @@ export interface ProjectFrontmatter {
   technologies?: string[];
   category: string;
   githubUrl?: string;
+  pypiUrl?: string;
+  pypiInstallCommand?: string;
   liveDemoUrl?: string;
   featured?: boolean;
   status?: string;

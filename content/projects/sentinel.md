@@ -9,6 +9,8 @@ galleryImages:
 technologies: ["Python", "Typer", "Rich", "Requests", "dnspython", "ReportLab"]
 category: "Developer Tools"
 githubUrl: "https://github.com/khizerarain/sentinel"
+pypiUrl: "https://pypi.org/project/sentinel-recon"
+pypiInstallCommand: "pip install sentinel-recon"
 featured: true
 status: "published"
 createdAt: "2026-07-09T12:00:00Z"

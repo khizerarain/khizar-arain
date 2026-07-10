@@ -21,6 +21,8 @@ function parseProject({
     technologies: frontmatter.technologies || [],
     category: frontmatter.category,
     githubUrl: frontmatter.githubUrl,
+    pypiUrl: frontmatter.pypiUrl,
+    pypiInstallCommand: frontmatter.pypiInstallCommand,
     liveDemoUrl: frontmatter.liveDemoUrl,
     featured: frontmatter.featured ?? false,
     status: frontmatter.status || "published",
@@ -33,14 +35,11 @@ export async function getAllProjects(): Promise<Project[]> {
   const projects = files.map(parseProject);
 
   return projects.sort(
-    (a, b) =>
-      new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
+    (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
   );
 }
 
-export async function getProjectBySlug(
-  slug: string,
-): Promise<Project | null> {
+export async function getProjectBySlug(slug: string): Promise<Project | null> {
   const projects = await getAllProjects();
   return projects.find((project) => project.slug === slug) || null;
 }

@@ -9,6 +9,8 @@ galleryImages:
 technologies: ["Python", "Typer", "Rich", "OpenAI API", "REST APIs"]
 category: "Developer Tools"
 githubUrl: "https://github.com/khizerarain/atlas"
+pypiUrl: "https://pypi.org/project/atlas-world-intel"
+pypiInstallCommand: "pip install atlas-world-intel"
 featured: true
 status: "published"
 createdAt: "2026-06-16T12:00:00Z"

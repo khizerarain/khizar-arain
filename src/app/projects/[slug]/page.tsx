@@ -54,23 +54,12 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
   const related = await getRelatedProjects(slug, 2);
 
-  const pypiInfo =
-    project.slug === "utopia"
-      ? {
-          url: "https://pypi.org/project/utopia-analyzer",
-          install: "pip install utopia-analyzer",
-        }
-      : project.slug === "atlas"
-        ? {
-            url: "https://pypi.org/project/atlas-world-intel",
-            install: "pip install atlas-world-intel",
-          }
-        : project.slug === "sentinel"
-          ? {
-              url: "https://pypi.org/project/sentinel-recon",
-              install: "pip install sentinel-recon",
-            }
-          : null;
+  const pypiInfo = project.pypiUrl
+    ? {
+        url: project.pypiUrl,
+        install: project.pypiInstallCommand || "",
+      }
+    : null;
 
   return (
     <div className="min-h-screen bg-black pt-32 pb-24">
@@ -153,24 +142,31 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               </a>
             </Button>
           )}
+          {project.pypiUrl && (
+            <Button
+              variant="outline"
+              className="rounded-full border-white/10 bg-transparent text-white hover:bg-white/5"
+              asChild
+            >
+              <a href={project.pypiUrl} target="_blank" rel="noreferrer">
+                <svg
+                  className="mr-2 h-4 w-4"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path d="M12 0 0 6v12l12 6 12-6V6L12 0Zm0 2.2 9.6 4.8L12 11.8 2.4 7 12 2.2Zm-10 7.1 10 5 10-5v7.4l-10 5-10-5V9.3Z" />
+                </svg>
+                PyPI
+              </a>
+            </Button>
+          )}
         </div>
 
-        {pypiInfo && (
-          <div className="mt-4 w-full rounded-full border border-white/10 bg-white/[0.02] px-4 py-3 text-sm text-neutral-300">
+        {pypiInfo && pypiInfo.install && (
+          <div className="mt-4 w-full rounded-2xl border border-white/10 bg-neutral-950/80 p-4 text-sm text-neutral-300">
             <div className="flex flex-wrap items-center gap-2">
-              <span className="font-medium text-white">PyPI:</span>
-              <a
-                href={pypiInfo.url}
-                target="_blank"
-                rel="noreferrer"
-                className="text-cyan-400 transition-colors hover:text-cyan-300"
-              >
-                {pypiInfo.url}
-              </a>
-            </div>
-            <div className="mt-2 flex flex-wrap items-center gap-2">
               <span className="font-medium text-white">Install:</span>
-              <code className="rounded bg-white/10 px-2 py-1 font-mono text-xs text-neutral-200">
+              <code className="rounded bg-white/10 px-2 py-1 font-mono text-xs text-neutral-100">
                 {pypiInfo.install}
               </code>
             </div>

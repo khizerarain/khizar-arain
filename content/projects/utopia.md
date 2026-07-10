@@ -9,6 +9,8 @@ galleryImages:
 technologies: ["Python", "Click", "Rich"]
 category: "Developer Tools"
 githubUrl: "https://github.com/khizerarain/utopia"
+pypiUrl: "https://pypi.org/project/utopia-analyzer"
+pypiInstallCommand: "pip install utopia-analyzer"
 featured: true
 status: "published"
 createdAt: "2026-06-14T10:00:00Z"

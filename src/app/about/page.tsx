@@ -23,6 +23,9 @@ const skills = [
   "Shopify",
   "Figma",
   "Git",
+  "Python",
+  "Docker",
+  "JavaScript",
 ];
 
 const experience = [

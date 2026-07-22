@@ -2,7 +2,7 @@
 title: "I'm 18, From Pakistan, and I'm Just Building."
 slug: "im-18-from-pakistan-and-im-just-building"
 excerpt: "A candid look at building projects at 18, using AI as a collaborator, and what it feels like to learn by shipping tools instead of chasing perfection."
-coverImage: "c:\Users\DELL\Downloads\midweek motivation; just two more days to the….jfif"
+coverImage: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80"
 category: "Personal"
 tags: ["Personal", "Building", "AI", "Next.js"]
 createdAt: "2025-07-10"

@@ -1,5 +1,6 @@
 import Hero from "@/components/sections/Hero";
 import FeaturedProjects from "@/components/sections/FeaturedProjects";
+import { MnemoFlagship } from "@/components/sections/MnemoFlagship";
 import Services from "@/components/sections/Services";
 import About from "@/components/sections/About";
 import Contact from "@/components/sections/Contact";
@@ -11,6 +12,7 @@ export default async function Home() {
   return (
     <>
       <Hero />
+      <MnemoFlagship />
       <FeaturedProjects projects={projects} />
       <Services />
       <About />

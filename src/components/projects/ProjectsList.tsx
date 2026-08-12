@@ -48,19 +48,19 @@ export default function ProjectsList({
 
   return (
     <div>
-      <div className="mb-8 flex flex-col gap-4 md:flex-row">
+      <div className="mb-10 flex flex-col gap-4 md:flex-row">
         <Input
           placeholder="Search projects..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="h-11 rounded-full border-white/10 bg-white/[0.02] text-white placeholder:text-neutral-500 focus-visible:ring-white/20"
+          className="h-11 rounded-full border-border bg-card px-5 text-foreground placeholder:text-muted-foreground"
         />
         <div className="flex gap-3">
           <Select value={category} onValueChange={(value) => setCategory(value ?? "all")}>
-            <SelectTrigger className="w-[160px] rounded-full border-white/10 bg-white/[0.02] text-white">
+            <SelectTrigger className="w-[160px] rounded-full border-border bg-card px-5 text-foreground data-[size=default]:h-11">
               <SelectValue placeholder="Category" />
             </SelectTrigger>
-            <SelectContent className="border-white/10 bg-neutral-900 text-white">
+            <SelectContent>
               <SelectItem value="all">All categories</SelectItem>
               {categories.map((c) => (
                 <SelectItem key={c} value={c}>
@@ -71,10 +71,10 @@ export default function ProjectsList({
           </Select>
 
           <Select value={technology} onValueChange={(value) => setTechnology(value ?? "all")}>
-            <SelectTrigger className="w-[160px] rounded-full border-white/10 bg-white/[0.02] text-white">
+            <SelectTrigger className="w-[160px] rounded-full border-border bg-card px-5 text-foreground data-[size=default]:h-11">
               <SelectValue placeholder="Technology" />
             </SelectTrigger>
-            <SelectContent className="border-white/10 bg-neutral-900 text-white">
+            <SelectContent>
               <SelectItem value="all">All tech</SelectItem>
               {technologies.map((t) => (
                 <SelectItem key={t} value={t}>
@@ -87,7 +87,7 @@ export default function ProjectsList({
       </div>
 
       {filtered.length === 0 ? (
-        <div className="rounded-2xl border border-white/10 bg-white/[0.02] py-20 text-center text-neutral-400">
+        <div className="rounded-2xl border border-border bg-card py-20 text-center text-muted-foreground">
           No projects match your filters.
         </div>
       ) : (

@@ -55,41 +55,43 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const related = await getRelatedPosts(slug, 2);
 
   return (
-    <div className="min-h-screen bg-black pt-32 pb-24">
-      <div className="mx-auto max-w-3xl px-6">
+    <div className="min-h-screen pb-24">
+      <div className="mx-auto max-w-3xl px-6 pt-32 md:pt-40">
         <Button
           variant="ghost"
           size="sm"
-          className="mb-8 -ml-3 text-neutral-400 hover:text-white"
+          className="mb-10 -ml-3 rounded-full"
           asChild
         >
           <Link href="/blog">
-            <ArrowLeft className="mr-2 h-4 w-4" />
+            <ArrowLeft className="mr-2 h-4 w-4" aria-hidden="true" />
             Back to Blog
           </Link>
         </Button>
 
-        <div className="mb-8">
+        <div className="mb-10">
           <div className="mb-4 flex flex-wrap items-center gap-3">
-            <Badge variant="outline" className="border-white/10 text-neutral-300">
+            <Badge variant="outline" className="rounded-full px-3 py-1">
               {post.category}
             </Badge>
-            <span className="text-sm text-neutral-500">
+            <span className="font-mono text-xs uppercase tracking-[0.12em] text-muted-foreground">
               {formatDate(post.createdAt)} · {calculateReadingTime(post.content)}{" "}
               min read
             </span>
           </div>
-          <h1 className="text-4xl font-bold tracking-tight text-white md:text-5xl">
+          <h1 className="text-4xl font-semibold tracking-tight text-foreground md:text-5xl">
             {post.title}
           </h1>
-          <p className="mt-4 text-lg text-neutral-400">{post.excerpt}</p>
+          <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
+            {post.excerpt}
+          </p>
         </div>
 
         {post.coverImage && (
-          <div className="mb-10 overflow-hidden rounded-2xl border border-white/10">
+          <div className="mb-10 overflow-hidden rounded-2xl border border-border bg-card">
             <img
               src={post.coverImage}
-              alt={post.title}
+              alt={`Cover image for ${post.title}`}
               className="w-full object-cover"
             />
           </div>
@@ -99,7 +101,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           {post.tags.map((tag) => (
             <span
               key={tag}
-              className="rounded-full border border-white/10 bg-white/[0.02] px-4 py-1.5 text-sm text-neutral-300"
+              className="rounded-full border border-border bg-secondary px-4 py-1.5 text-sm text-muted-foreground"
             >
               {tag}
             </span>
@@ -110,33 +112,33 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           <MarkdownRenderer>{post.content}</MarkdownRenderer>
         </article>
 
-        <Separator className="my-12 bg-white/10" />
+        <Separator className="my-12" />
 
         {related.length > 0 && (
           <div>
-            <h2 className="mb-6 text-2xl font-bold text-white">
+            <h2 className="mb-6 text-2xl font-semibold tracking-tight text-foreground">
               Related Articles
             </h2>
             <div className="grid gap-6 sm:grid-cols-2">
               {related.map((item) => (
-                <Link key={item.id} href={`/blog/${item.slug}`}>
-                  <Card className="overflow-hidden border-white/10 bg-white/[0.02] transition-all hover:border-white/20 hover:bg-white/[0.04]">
+                <Link key={item.id} href={`/blog/${item.slug}`} className="block h-full">
+                  <Card className="h-full gap-0 overflow-hidden rounded-2xl border border-border bg-card py-0 ring-0 transition-colors hover:border-foreground/25">
                     <div className="aspect-video overflow-hidden">
                       {item.coverImage ? (
                         <img
                           src={item.coverImage}
-                          alt={item.title}
+                          alt={`Cover image for ${item.title}`}
                           className="h-full w-full object-cover"
                         />
                       ) : (
-                        <div className="h-full w-full bg-neutral-900" />
+                        <div className="h-full w-full bg-secondary" />
                       )}
                     </div>
                     <CardContent className="p-5">
-                      <h3 className="font-semibold text-white">
+                      <h3 className="font-semibold text-foreground">
                         {item.title}
                       </h3>
-                      <p className="mt-1 line-clamp-2 text-sm text-neutral-400">
+                      <p className="mt-1 line-clamp-2 text-sm text-muted-foreground">
                         {item.excerpt}
                       </p>
                     </CardContent>

@@ -12,6 +12,9 @@ interface BlogListProps {
   tags: string[];
 }
 
+const filterBadge = "cursor-pointer rounded-full px-3 py-1 transition-colors";
+const inactiveBadge = "hover:bg-accent/60";
+
 export default function BlogList({ posts, categories, tags }: BlogListProps) {
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState<string | null>(null);
@@ -34,37 +37,40 @@ export default function BlogList({ posts, categories, tags }: BlogListProps) {
 
   return (
     <div>
-      <div className="mb-8 flex flex-col gap-4">
+      <div className="mb-10 flex flex-col gap-5">
         <Input
           placeholder="Search articles..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="h-11 rounded-full border-white/10 bg-white/[0.02] text-white placeholder:text-neutral-500 focus-visible:ring-white/20"
+          className="h-11 rounded-full border-border bg-card px-5 text-foreground placeholder:text-muted-foreground"
         />
 
-        <div className="flex flex-wrap gap-2">
-          <span className="py-2 text-sm text-neutral-500">Categories:</span>
-          <button onClick={() => setCategory(null)}>
+        <div className="flex flex-wrap items-center gap-2">
+          <span className="py-2 text-sm text-muted-foreground">Categories:</span>
+          <button
+            type="button"
+            onClick={() => setCategory(null)}
+            className="rounded-full"
+            aria-pressed={category === null}
+          >
             <Badge
               variant={category === null ? "default" : "outline"}
-              className={`cursor-pointer ${
-                category === null
-                  ? "bg-white text-black hover:bg-neutral-200"
-                  : "border-white/10 text-neutral-300 hover:bg-white/5"
-              }`}
+              className={`${filterBadge} ${category === null ? "" : inactiveBadge}`}
             >
               All
             </Badge>
           </button>
           {categories.map((c) => (
-            <button key={c} onClick={() => setCategory(c)}>
+            <button
+              key={c}
+              type="button"
+              onClick={() => setCategory(c)}
+              className="rounded-full"
+              aria-pressed={category === c}
+            >
               <Badge
                 variant={category === c ? "default" : "outline"}
-                className={`cursor-pointer ${
-                  category === c
-                    ? "bg-white text-black hover:bg-neutral-200"
-                    : "border-white/10 text-neutral-300 hover:bg-white/5"
-                }`}
+                className={`${filterBadge} ${category === c ? "" : inactiveBadge}`}
               >
                 {c}
               </Badge>
@@ -72,29 +78,32 @@ export default function BlogList({ posts, categories, tags }: BlogListProps) {
           ))}
         </div>
 
-        <div className="flex flex-wrap gap-2">
-          <span className="py-2 text-sm text-neutral-500">Tags:</span>
-          <button onClick={() => setTag(null)}>
+        <div className="flex flex-wrap items-center gap-2">
+          <span className="py-2 text-sm text-muted-foreground">Tags:</span>
+          <button
+            type="button"
+            onClick={() => setTag(null)}
+            className="rounded-full"
+            aria-pressed={tag === null}
+          >
             <Badge
               variant={tag === null ? "default" : "outline"}
-              className={`cursor-pointer ${
-                tag === null
-                  ? "bg-white text-black hover:bg-neutral-200"
-                  : "border-white/10 text-neutral-300 hover:bg-white/5"
-              }`}
+              className={`${filterBadge} ${tag === null ? "" : inactiveBadge}`}
             >
               All
             </Badge>
           </button>
           {tags.map((t) => (
-            <button key={t} onClick={() => setTag(t)}>
+            <button
+              key={t}
+              type="button"
+              onClick={() => setTag(t)}
+              className="rounded-full"
+              aria-pressed={tag === t}
+            >
               <Badge
                 variant={tag === t ? "default" : "outline"}
-                className={`cursor-pointer ${
-                  tag === t
-                    ? "bg-white text-black hover:bg-neutral-200"
-                    : "border-white/10 text-neutral-300 hover:bg-white/5"
-                }`}
+                className={`${filterBadge} ${tag === t ? "" : inactiveBadge}`}
               >
                 {t}
               </Badge>
@@ -104,7 +113,7 @@ export default function BlogList({ posts, categories, tags }: BlogListProps) {
       </div>
 
       {filtered.length === 0 ? (
-        <div className="rounded-2xl border border-white/10 bg-white/[0.02] py-20 text-center text-neutral-400">
+        <div className="rounded-2xl border border-border bg-card py-20 text-center text-muted-foreground">
           No articles match your filters.
         </div>
       ) : (

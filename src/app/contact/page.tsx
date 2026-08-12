@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Eyebrow } from "@/components/ui/eyebrow";
 import { Mail, Phone, Calendar, MapPin } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -43,45 +44,44 @@ const contactMethods = [
 
 export default function ContactPage() {
   return (
-    <div className="min-h-screen bg-black pt-32 pb-24">
-      <div className="mx-auto max-w-4xl px-6">
-        <div className="mb-16 text-center">
-          <p className="mb-3 text-sm font-medium uppercase tracking-[0.2em] text-neutral-500">
-            Contact
-          </p>
-          <h1 className="text-4xl font-bold tracking-tight text-white md:text-5xl">
+    <div className="min-h-screen pb-24">
+      <div className="mx-auto max-w-5xl px-6 pt-32 md:pt-40">
+        <header className="max-w-2xl">
+          <Eyebrow>Contact</Eyebrow>
+          <h1 className="mt-3 text-4xl font-semibold tracking-tight text-foreground md:text-5xl">
             Let&apos;s work together
           </h1>
-          <p className="mx-auto mt-4 max-w-2xl text-neutral-400">
+          <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
             Have a project in mind? I&apos;d love to hear about it. Choose the
             best way to reach me below.
           </p>
-        </div>
+        </header>
 
-        <div className="grid gap-6 sm:grid-cols-2">
+        <div className="mt-16 grid gap-6 sm:grid-cols-2">
           {contactMethods.map((method) => (
             <Card
               key={method.label}
-              className="border-white/10 bg-white/[0.02] transition-all hover:border-white/20 hover:bg-white/[0.04]"
+              className="rounded-2xl border border-border bg-card ring-0 transition-colors hover:border-foreground/25"
             >
               <CardContent className="p-8">
                 <method.icon
-                  className="h-7 w-7 text-white"
+                  className="h-7 w-7 text-foreground"
                   strokeWidth={1.5}
+                  aria-hidden="true"
                 />
-                <p className="mt-6 text-xs font-semibold uppercase tracking-wider text-neutral-500">
+                <p className="mt-6 text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
                   {method.label}
                 </p>
-                <p className="mt-2 text-xl font-semibold text-white">
+                <p className="mt-2 text-xl font-semibold tracking-tight text-foreground">
                   {method.value}
                 </p>
-                <p className="mt-2 text-sm text-neutral-400">
+                <p className="mt-2 text-sm text-muted-foreground">
                   {method.description}
                 </p>
                 <Button
                   variant="outline"
                   size="sm"
-                  className="mt-6 rounded-full border-white/10 bg-transparent text-white hover:bg-white/5"
+                  className="mt-6 rounded-full px-4"
                   asChild
                 >
                   <Link href={method.href}>
@@ -99,19 +99,15 @@ export default function ContactPage() {
           ))}
         </div>
 
-        <div className="mt-16 rounded-2xl border border-white/10 bg-white/[0.02] p-8 text-center md:p-12">
-          <h2 className="text-2xl font-bold text-white">
+        <div className="mt-20 rounded-2xl border border-border bg-card p-8 text-center md:p-12">
+          <h2 className="text-2xl font-semibold tracking-tight text-foreground">
             Prefer a direct message?
           </h2>
-          <p className="mx-auto mt-3 max-w-lg text-neutral-400">
+          <p className="mx-auto mt-3 max-w-lg leading-relaxed text-muted-foreground">
             For project inquiries, send an email with a brief description of
             what you need and I&apos;ll get back within 24 hours.
           </p>
-          <Button
-            size="lg"
-            className="mt-6 rounded-full bg-white px-8 text-black hover:bg-neutral-200"
-            asChild
-          >
+          <Button size="lg" className="mt-8 rounded-full px-8" asChild>
             <a href="mailto:realkhizararain7@gmail.com">Send an Email</a>
           </Button>
         </div>

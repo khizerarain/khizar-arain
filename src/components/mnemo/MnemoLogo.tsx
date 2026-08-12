@@ -50,7 +50,7 @@ export function MnemoLogo({ className, size = 40, showText = true }: MnemoLogoPr
         />
       </svg>
       {showText && (
-        <span className="text-xl font-semibold tracking-tight text-white">
+        <span className="text-xl font-semibold tracking-tight text-foreground">
           MNEMO
         </span>
       )}

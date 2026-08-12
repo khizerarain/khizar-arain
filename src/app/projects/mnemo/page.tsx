@@ -43,7 +43,7 @@ export const metadata: Metadata = {
 
 export default function MnemoPage() {
   return (
-    <div className="relative bg-black">
+    <div className="dark relative bg-black text-foreground">
       <div className="fixed top-20 left-6 z-40 hidden md:block">
         <Button
           variant="ghost"

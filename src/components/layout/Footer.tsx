@@ -1,82 +1,95 @@
 import React from "react";
 import Link from "next/link";
 import { Separator } from "@/components/ui/separator";
+import { siteConfig, socialLinks } from "@/lib/site";
 
-const footerLinks = [
+const pageLinks = [
+  { label: "Home", href: "/" },
   { label: "Projects", href: "/projects" },
+  { label: "Packages", href: "/packages" },
   { label: "Blog", href: "/blog" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];
 
-const socialLinks = [
-  { label: "X", href: "https://x.com/KhizarArain103" },
-  { label: "Instagram", href: "https://www.instagram.com/realkhizerarain/" },
-  { label: "GitHub", href: "https://github.com" },
-];
+/* A compact "KA" monogram drawn with half-block glyphs. */
+const signature = `█ ▄▀  ▄▀▄
+█▀▄   █▀█
+▀  ▀  ▀ ▀`;
 
 export default function Footer() {
   return (
-    <footer className="border-t border-white/10 bg-black">
-      <div className="mx-auto max-w-6xl px-6 py-12">
-        <div className="flex flex-col items-start justify-between gap-8 md:flex-row md:items-center">
+    <footer className="border-t border-border bg-background">
+      <div className="mx-auto max-w-5xl px-6 py-16">
+        <div className="flex flex-col justify-between gap-12 md:flex-row">
           <div>
-            <Link
-              href="/"
-              className="text-lg font-bold tracking-tight text-white"
+            <pre
+              aria-hidden="true"
+              className="font-mono text-[13px] leading-tight text-foreground/70"
             >
-              khizar arain
-            </Link>
-            <p className="mt-2 max-w-xs text-sm text-neutral-400">
-              Full-stack developer building clean, modern, and high-performing
-              digital experiences.
+              {signature}
+            </pre>
+            <p className="mt-4 font-mono text-xs tracking-wide text-muted-foreground">
+              build · ship · repeat
             </p>
           </div>
 
-          <div className="flex flex-wrap gap-8">
-            <div className="flex flex-col gap-3">
-              <span className="text-xs font-semibold uppercase tracking-wider text-neutral-500">
+          <div className="flex gap-16">
+            <nav aria-label="Pages">
+              <h2 className="text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
                 Pages
-              </span>
-              <div className="flex flex-col gap-2">
-                {footerLinks.map((link) => (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    className="text-sm text-neutral-300 transition-colors hover:text-white"
-                  >
-                    {link.label}
-                  </Link>
+              </h2>
+              <ul className="mt-4 flex flex-col gap-2.5">
+                {pageLinks.map((link) => (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
                 ))}
-              </div>
-            </div>
+              </ul>
+            </nav>
 
-            <div className="flex flex-col gap-3">
-              <span className="text-xs font-semibold uppercase tracking-wider text-neutral-500">
+            <nav aria-label="Social">
+              <h2 className="text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
                 Social
-              </span>
-              <div className="flex flex-col gap-2">
-                {socialLinks.map((link) => (
-                  <a
-                    key={link.href}
-                    href={link.href}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="text-sm text-neutral-300 transition-colors hover:text-white"
-                  >
-                    {link.label}
-                  </a>
+              </h2>
+              <ul className="mt-4 flex flex-col gap-2.5">
+                {socialLinks.map((social) => (
+                  <li key={social.label}>
+                    <a
+                      href={social.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                    >
+                      {social.label}
+                    </a>
+                  </li>
                 ))}
-              </div>
-            </div>
+                <li>
+                  <a
+                    href={`mailto:${siteConfig.email}`}
+                    className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                  >
+                    Email
+                  </a>
+                </li>
+              </ul>
+            </nav>
           </div>
         </div>
 
-        <Separator className="my-8 bg-white/10" />
+        <Separator className="my-10 bg-border" />
 
-        <div className="flex flex-col items-center justify-between gap-4 text-sm text-neutral-500 md:flex-row">
-          <p>© {new Date().getFullYear()} Khizar Arain. All rights reserved.</p>
-          <p>Built with Next.js, Tailwind CSS & shadcn/ui</p>
+        <div className="flex flex-col items-start justify-between gap-3 text-sm text-muted-foreground md:flex-row md:items-center">
+          <p>
+            © {new Date().getFullYear()} Khizar Arain. All rights reserved.
+          </p>
+          <p>Built with Next.js, Tailwind CSS &amp; shadcn/ui</p>
         </div>
       </div>
     </footer>

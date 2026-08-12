@@ -1,8 +1,8 @@
 import { getAllPosts } from "@/lib/blog";
-import { formatDate } from "@/lib/utils";
+import { siteConfig } from "@/lib/site";
 
 export async function GET() {
-  const baseUrl = "https://khizararain.com";
+  const baseUrl = siteConfig.url;
   const posts = await getAllPosts();
 
   const items = posts

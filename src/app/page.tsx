@@ -1,22 +1,36 @@
-import Hero from "@/components/sections/Hero";
-import FeaturedProjects from "@/components/sections/FeaturedProjects";
-import { MnemoFlagship } from "@/components/sections/MnemoFlagship";
-import Services from "@/components/sections/Services";
-import About from "@/components/sections/About";
-import Contact from "@/components/sections/Contact";
-import { getFeaturedProjects } from "@/lib/projects";
+import { Suspense } from "react";
+import { Hero } from "@/components/sections/home/Hero";
+import {
+  BuildingInPublic,
+  GitHubActivity,
+  GitHubActivitySkeleton,
+} from "@/components/sections/home/BuildingInPublic";
+import { ForFounders } from "@/components/sections/home/ForFounders";
+import { StatsRow } from "@/components/sections/home/StatsRow";
+import { Work } from "@/components/sections/home/Work";
+import { Packages } from "@/components/sections/home/Packages";
+import { Services } from "@/components/sections/home/Services";
+import { Writing } from "@/components/sections/home/Writing";
+import { Stack } from "@/components/sections/home/Stack";
+import { FinalCta } from "@/components/sections/home/FinalCta";
 
-export default async function Home() {
-  const projects = await getFeaturedProjects();
-
+export default function Home() {
   return (
     <>
       <Hero />
-      <MnemoFlagship />
-      <FeaturedProjects projects={projects} />
+      <BuildingInPublic>
+        <Suspense fallback={<GitHubActivitySkeleton />}>
+          <GitHubActivity />
+        </Suspense>
+      </BuildingInPublic>
+      <ForFounders />
+      <StatsRow />
+      <Work />
+      <Packages />
       <Services />
-      <About />
-      <Contact />
+      <Writing />
+      <Stack />
+      <FinalCta />
     </>
   );
 }

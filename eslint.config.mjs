@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Stray nested scaffold; its build output otherwise floods lint results.
+    "khizar A.2/**",
   ]),
 ]);
 

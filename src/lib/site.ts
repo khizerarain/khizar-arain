@@ -38,6 +38,18 @@ export const socialLinks = [
 export const mnemoDemoUrl = "https://mnemo-brain.vercel.app/";
 
 /**
+ * Cal.com / Calendly URL for the 20-minute intro call.
+ * Leave null until a real scheduling page is live — the contact page
+ * will show an [ADD BOOKING LINK] placeholder instead of a dead URL.
+ */
+export const bookingUrl: string | null = null;
+
+/**
+ * LinkedIn profile. Null until a public URL exists — do not invent one.
+ */
+export const linkedinUrl: string | null = null;
+
+/**
  * Stats rendered with a count-up on scroll.
  * `value` is the number animated to; `suffix` is appended verbatim.
  */

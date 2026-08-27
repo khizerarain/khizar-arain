@@ -1,11 +1,13 @@
 import { getAllPosts } from "@/lib/blog";
 import { siteConfig } from "@/lib/site";
+import { isValidDate } from "@/lib/utils";
 
 export async function GET() {
   const baseUrl = siteConfig.url;
   const posts = await getAllPosts();
 
   const items = posts
+    .filter((post) => isValidDate(post.createdAt))
     .map(
       (post) => `
     <item>
@@ -25,7 +27,7 @@ export async function GET() {
   <channel>
     <title>Khizar Arain Blog</title>
     <link>${baseUrl}/blog</link>
-    <description>Insights on design, development, and building a standout personal brand.</description>
+    <description>Notes on the projects I have shipped — why I built them, what they do, and what I learned.</description>
     <language>en-us</language>
     <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
     ${items}

@@ -2,6 +2,7 @@ import { MetadataRoute } from "next";
 import { getAllPosts } from "@/lib/blog";
 import { getAllProjects } from "@/lib/projects";
 import { siteConfig } from "@/lib/site";
+import { isValidDate } from "@/lib/utils";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = siteConfig.url;
@@ -25,7 +26,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const blogRoutes = posts.map((post) => ({
     url: `${baseUrl}/blog/${post.slug}`,
-    lastModified: new Date(post.updatedAt),
+    lastModified: isValidDate(post.updatedAt)
+      ? new Date(post.updatedAt)
+      : new Date(),
     changeFrequency: "weekly" as const,
     priority: 0.7,
   }));

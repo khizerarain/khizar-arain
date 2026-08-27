@@ -32,9 +32,9 @@ export async function Writing() {
           <li key={post.slug}>
             <Link
               href={`/blog/${post.slug}`}
-              className="flex flex-col gap-1 border-t border-border py-5 transition-colors hover:border-foreground/25 sm:flex-row sm:items-baseline sm:justify-between sm:gap-8"
+              className="group flex flex-col gap-1 py-5 sm:flex-row sm:items-baseline sm:justify-between sm:gap-8"
             >
-              <span className="text-base font-medium text-foreground">
+              <span className="text-base font-medium text-foreground transition-colors group-hover:text-foreground/70">
                 {post.title}
               </span>
               <time

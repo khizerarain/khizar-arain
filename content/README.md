@@ -17,6 +17,7 @@ tags: ["Next.js", "Tailwind"]
 createdAt: "2026-06-12T08:00:00Z"
 updatedAt: "2026-06-12T08:00:00Z"
 featured: false
+# If the real ship date is unknown, use createdAt: "[DATE]" — never invent one.
 ---
 
 # My New Post

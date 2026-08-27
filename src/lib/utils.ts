@@ -5,7 +5,22 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
+/** Visible placeholder when a ship date is not yet confirmed. Do not invent one. */
+export const DATE_PLACEHOLDER = "[DATE]";
+
+export function isValidDate(date: string | Date | undefined): boolean {
+  if (date == null) return false;
+  if (typeof date === "string") {
+    const trimmed = date.trim();
+    if (!trimmed || trimmed === DATE_PLACEHOLDER) return false;
+    const parsed = new Date(trimmed);
+    return !Number.isNaN(parsed.getTime());
+  }
+  return !Number.isNaN(date.getTime());
+}
+
 export function formatDate(date: string | Date): string {
+  if (!isValidDate(date)) return DATE_PLACEHOLDER;
   const d = typeof date === "string" ? new Date(date) : date;
   return d.toLocaleDateString("en-US", {
     year: "numeric",

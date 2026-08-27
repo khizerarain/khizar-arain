@@ -10,26 +10,32 @@ import "highlight.js/styles/github.css";
 
 interface MarkdownRendererProps {
   children: string;
+  /** Project markdown files open with `# Title`; shift those headings down. Blog posts already have a page `<h1>`. */
+  shiftHeadings?: boolean;
 }
 
-export default function MarkdownRenderer({ children }: MarkdownRendererProps) {
+export default function MarkdownRenderer({
+  children,
+  shiftHeadings = true,
+}: MarkdownRendererProps) {
   return (
     <ReactMarkdown
       remarkPlugins={[remarkGfm, [remarkToc, { heading: "toc", maxDepth: 3 }]]}
       rehypePlugins={[rehypeSlug, rehypeHighlight]}
       components={{
-        // Content files open with `# Title`, but the page already renders the
-        // title as its <h1>. Shift markdown headings down one level so each
-        // page keeps a single <h1>.
-        h1: ({ children: content, ...props }) => (
-          <h2 {...props}>{content}</h2>
-        ),
-        h2: ({ children: content, ...props }) => (
-          <h3 {...props}>{content}</h3>
-        ),
-        h3: ({ children: content, ...props }) => (
-          <h4 {...props}>{content}</h4>
-        ),
+        ...(shiftHeadings
+          ? {
+              h1: ({ children: content, ...props }: { children?: React.ReactNode }) => (
+                <h2 {...props}>{content}</h2>
+              ),
+              h2: ({ children: content, ...props }: { children?: React.ReactNode }) => (
+                <h3 {...props}>{content}</h3>
+              ),
+              h3: ({ children: content, ...props }: { children?: React.ReactNode }) => (
+                <h4 {...props}>{content}</h4>
+              ),
+            }
+          : {}),
         img: (props) => (
           // eslint-disable-next-line @next/next/no-img-element
           <img

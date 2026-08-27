@@ -1,5 +1,11 @@
 import { readMarkdownFiles } from "./content";
+import { isValidDate } from "./utils";
 import type { BlogPost, BlogPostFrontmatter } from "@/types/blog";
+
+function timestamp(createdAt: string): number {
+  if (!isValidDate(createdAt)) return 0;
+  return new Date(createdAt).getTime();
+}
 
 function parsePost({
   frontmatter,
@@ -19,7 +25,7 @@ function parsePost({
     coverImage: frontmatter.coverImage,
     category: frontmatter.category,
     tags: frontmatter.tags || [],
-    createdAt: frontmatter.createdAt,
+    createdAt: String(frontmatter.createdAt ?? ""),
     updatedAt: frontmatter.updatedAt || frontmatter.createdAt,
     featured: frontmatter.featured ?? false,
   };
@@ -29,10 +35,7 @@ export async function getAllPosts(): Promise<BlogPost[]> {
   const files = await readMarkdownFiles<BlogPostFrontmatter>("content/blog");
   const posts = files.map(parsePost);
 
-  return posts.sort(
-    (a, b) =>
-      new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
-  );
+  return posts.sort((a, b) => timestamp(b.createdAt) - timestamp(a.createdAt));
 }
 
 export async function getPostBySlug(
